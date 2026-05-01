@@ -22,6 +22,7 @@ body{
 h1,h2{
   font-family:'Playfair Display', serif;
   letter-spacing:1px;
+  margin-bottom:10px;
 }
 
 a{
@@ -53,9 +54,9 @@ nav{
   opacity:1;
 }
 
-/* ===== HERO ===== */
+/* ===== HERO (UPDATED) ===== */
 .hero{
-  padding:100px 20px 60px;
+  padding:60px 20px 30px;
   text-align:center;
 }
 
@@ -70,12 +71,12 @@ nav{
   font-size:14px;
 }
 
-/* ===== INTRO ===== */
+/* ===== INTRO (UPDATED) ===== */
 .intro{
   max-width:800px;
   margin:auto;
   text-align:center;
-  padding:0 20px 60px;
+  padding:0 20px 30px;
 }
 
 .intro p{
@@ -83,13 +84,13 @@ nav{
   opacity:.9;
 }
 
-/* ===== ALBUMS ===== */
+/* ===== ALBUMS (UPDATED) ===== */
 .albums{
   display:grid;
   grid-template-columns:repeat(auto-fit, minmax(240px, 320px));
   justify-content:center;
-  gap:25px;
-  padding:40px 20px;
+  gap:20px;
+  padding:20px;
 }
 
 .album{
@@ -160,10 +161,10 @@ nav{
 .arrow.left{ left:20px; }
 .arrow.right{ right:20px; }
 
-/* ===== CTA ===== */
+/* ===== CTA (UPDATED) ===== */
 .cta{
   text-align:center;
-  padding:80px 20px;
+  padding:50px 20px;
 }
 
 .cta a{
@@ -194,7 +195,6 @@ footer{
 
 <body>
 
-<!-- NAV -->
 <nav>
   <div class="logo">b.w fotos</div>
   <div class="nav-links">
@@ -205,13 +205,11 @@ footer{
   </div>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
   <h1>Nature Portraits</h1>
   <p>AUTHENTIC. NATURAL. REAL.</p>
 </section>
 
-<!-- INTRO -->
 <section class="intro">
   <p>
     Portraits captured in natural environments where light, setting, and emotion come together.
@@ -219,7 +217,6 @@ footer{
   </p>
 </section>
 
-<!-- ALBUMS -->
 <section class="albums">
 
   <div class="album" onclick="openAlbum('faye')">
@@ -234,20 +231,17 @@ footer{
 
 </section>
 
-<!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox" onclick="closeLightbox()">
   <span class="arrow left" onclick="prev(event)">❮</span>
   <img id="lightbox-img">
   <span class="arrow right" onclick="next(event)">❯</span>
 </div>
 
-<!-- CTA -->
 <section class="cta">
   <h2>Book a Nature Portrait Session</h2>
   <a href="bookings.html">Contact Me</a>
 </section>
 
-<!-- FOOTER -->
 <footer>
   © 2026 b.w fotos | Capturing Moments. Preserving Stories.
 </footer>
