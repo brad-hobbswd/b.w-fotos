@@ -55,19 +55,18 @@ nav{
   color:#d4a5ff;
 }
 
-/* ===== HERO (UPDATED) ===== */
+/* ===== HERO (FIXED) ===== */
 .hero{
-  position:relative;
   width:100%;
-  height:90vh;
   overflow:hidden;
 }
 
 .hero-banner{
   width:100%;
-  height:100%;
+  height:auto;
+  display:block;
+  max-height:500px; /* keeps it from getting too tall */
   object-fit:cover;
-  filter:brightness(0.9);
 }
 
 /* ===== ABOUT ===== */
@@ -193,7 +192,7 @@ footer{
   </div>
 </nav>
 
-<!-- ===== HERO (UPDATED) ===== -->
+<!-- ===== HERO (BANNER) ===== -->
 <section class="hero">
   <img src="banner.png" alt="b.w fotos banner" class="hero-banner">
 </section>
