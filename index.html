@@ -15,8 +15,8 @@
 body{
   margin:0;
   font-family: 'Inter', sans-serif;
-  background:#1a1714; /* warm dark brown/black */
-  color:#e6dccf; /* soft beige */
+  background:#1a1714;
+  color:#e6dccf;
 }
 
 h1,h2,h3{
@@ -26,7 +26,7 @@ h1,h2,h3{
 
 a{
   text-decoration:none;
-  color:#d4a5ff; /* muted purple */
+  color:#d4a5ff;
 }
 
 /* ===== NAV ===== */
@@ -67,7 +67,7 @@ nav{
     rgba(26,23,20,0.7),
     rgba(26,23,20,0.9)
   ),
-  url('your-image.jpg') center/cover no-repeat;
+  url('banner.png') center/cover no-repeat;
 }
 
 .hero-content h1{
@@ -108,6 +108,21 @@ nav{
   margin-bottom:20px;
 }
 
+.about-link{
+  display:inline-block;
+  margin-top:20px;
+  padding:10px 20px;
+  border:1px solid #d4a5ff;
+  border-radius:25px;
+  color:#d4a5ff;
+  transition:.3s;
+}
+
+.about-link:hover{
+  background:#d4a5ff;
+  color:#1a1714;
+}
+
 /* ===== SERVICES ===== */
 .services{
   padding:80px 20px;
@@ -127,6 +142,9 @@ nav{
   padding:30px;
   border-radius:12px;
   transition:.3s;
+  text-decoration:none;
+  color:inherit;
+  display:block;
 }
 
 .card:hover{
@@ -180,8 +198,8 @@ footer{
 <nav>
   <div class="logo">b.w fotos</div>
   <div class="nav-links">
-    <a href="#">Home</a>
-    <a href="#">About</a>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
     <a href="#">Gallery</a>
     <a href="#">Contact</a>
   </div>
@@ -196,47 +214,41 @@ footer{
   </div>
 </section>
 
-<!-- ===== ABOUT ===== -->
+<!-- ===== ABOUT PREVIEW ===== -->
 <section class="about">
-  <h2>The Story Behind the Lens</h2>
+  <h2>About b.w fotos</h2>
 
   <p>
-    b.w fotos was born from more than a love for photography. A name that carries personal history, identity, and meaning.
+    Photography rooted in identity, story, and perspective.
   </p>
 
   <p>
-    “b.w” comes from Bradley Wayne, a name spoken often growing up, especially in moments that shaped character and perspective. Over time, that name became identity. That identity became vision.
+    Natural light, environment, and real moments come together to create images that feel honest and timeless.
   </p>
 
-  <p>
-    Photography became a way of seeing the world differently. Black and white imagery removes distraction and reveals what truly matters. Emotion. Light. Story. Connection.
-  </p>
-
-  <p>
-    Every photo tells a story. Every story deserves to be remembered.
-  </p>
+  <a href="about.html" class="about-link">Read More</a>
 </section>
 
 <!-- ===== SERVICES ===== -->
 <section class="services">
-  <h2>What I Do</h2>
+  <h2>What I Capture</h2>
 
   <div class="services-grid">
 
-    <div class="card">
-      <h3>Portraits</h3>
-      <p>Real moments captured with depth, emotion, and authenticity.</p>
-    </div>
+    <a href="portraits.html" class="card">
+      <h3>Nature Portraits</h3>
+      <p>Portrait sessions captured in natural settings, focused on authentic moments, light, and environment.</p>
+    </a>
 
-    <div class="card">
-      <h3>Events</h3>
-      <p>Documenting meaningful experiences as they naturally unfold.</p>
-    </div>
+    <a href="mini-sessions.html" class="card">
+      <h3>Mini Sessions</h3>
+      <p>Short, intentional shoots designed to capture meaningful moments without the pressure of long sessions.</p>
+    </a>
 
-    <div class="card">
-      <h3>Creative Work</h3>
-      <p>Black and white imagery focused on story and artistic vision.</p>
-    </div>
+    <a href="scenic.html" class="card">
+      <h3>Scenic Creative</h3>
+      <p>Artistic photography of landscapes and surroundings, in both black and white and color.</p>
+    </a>
 
   </div>
 </section>
