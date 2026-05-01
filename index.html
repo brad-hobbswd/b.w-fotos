@@ -15,8 +15,8 @@
 body{
   margin:0;
   font-family: 'Inter', sans-serif;
-  background:#0b0b0b;
-  color:#eaeaea;
+  background:#1a1714; /* warm dark brown/black */
+  color:#e6dccf; /* soft beige */
 }
 
 h1,h2,h3{
@@ -26,7 +26,7 @@ h1,h2,h3{
 
 a{
   text-decoration:none;
-  color:#eaeaea;
+  color:#d4a5ff; /* muted purple */
 }
 
 /* ===== NAV ===== */
@@ -35,12 +35,13 @@ nav{
   justify-content:space-between;
   align-items:center;
   padding:20px 40px;
-  border-bottom:1px solid rgba(255,255,255,0.1);
+  border-bottom:1px solid rgba(212,165,255,0.2);
 }
 
 .logo{
   font-size:20px;
   letter-spacing:2px;
+  color:#e6dccf;
 }
 
 .nav-links a{
@@ -51,6 +52,7 @@ nav{
 
 .nav-links a:hover{
   opacity:1;
+  color:#d4a5ff;
 }
 
 /* ===== HERO ===== */
@@ -61,23 +63,30 @@ nav{
   justify-content:center;
   text-align:center;
   padding:20px;
+  background:linear-gradient(
+    rgba(26,23,20,0.7),
+    rgba(26,23,20,0.9)
+  ),
+  url('your-image.jpg') center/cover no-repeat;
 }
 
 .hero-content h1{
   font-size:52px;
   margin-bottom:10px;
+  color:#f2e9dc;
 }
 
 .hero-content p{
   font-size:16px;
-  opacity:.7;
+  opacity:.8;
   letter-spacing:2px;
+  color:#d4a5ff;
 }
 
 .est{
   margin-top:15px;
   font-size:13px;
-  opacity:.5;
+  opacity:.6;
 }
 
 /* ===== ABOUT ===== */
@@ -95,7 +104,7 @@ nav{
 
 .about p{
   line-height:1.8;
-  opacity:.8;
+  opacity:.85;
   margin-bottom:20px;
 }
 
@@ -113,19 +122,22 @@ nav{
 }
 
 .card{
-  border:1px solid rgba(255,255,255,0.1);
+  background:#211d19;
+  border:1px solid rgba(212,165,255,0.15);
   padding:30px;
-  border-radius:10px;
+  border-radius:12px;
   transition:.3s;
 }
 
 .card:hover{
   transform:translateY(-5px);
-  border-color:rgba(255,255,255,0.3);
+  border-color:#d4a5ff;
+  box-shadow:0 0 20px rgba(212,165,255,0.15);
 }
 
 .card h3{
   margin-bottom:10px;
+  color:#f2e9dc;
 }
 
 /* ===== CTA ===== */
@@ -138,21 +150,22 @@ nav{
   display:inline-block;
   margin-top:20px;
   padding:12px 25px;
-  border:1px solid #eaeaea;
+  border:1px solid #d4a5ff;
   border-radius:30px;
+  color:#d4a5ff;
   transition:.3s;
 }
 
 .cta a:hover{
-  background:#eaeaea;
-  color:#0b0b0b;
+  background:#d4a5ff;
+  color:#1a1714;
 }
 
 /* ===== FOOTER ===== */
 footer{
   text-align:center;
   padding:40px 20px;
-  border-top:1px solid rgba(255,255,255,0.1);
+  border-top:1px solid rgba(212,165,255,0.2);
   font-size:13px;
   opacity:.6;
 }
