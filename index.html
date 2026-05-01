@@ -55,38 +55,19 @@ nav{
   color:#d4a5ff;
 }
 
-/* ===== HERO ===== */
+/* ===== HERO (UPDATED) ===== */
 .hero{
+  position:relative;
+  width:100%;
   height:90vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  padding:20px;
-  background:linear-gradient(
-    rgba(26,23,20,0.7),
-    rgba(26,23,20,0.9)
-  ),
-  url('banner.png') center/cover no-repeat;
+  overflow:hidden;
 }
 
-.hero-content h1{
-  font-size:52px;
-  margin-bottom:10px;
-  color:#f2e9dc;
-}
-
-.hero-content p{
-  font-size:16px;
-  opacity:.8;
-  letter-spacing:2px;
-  color:#d4a5ff;
-}
-
-.est{
-  margin-top:15px;
-  font-size:13px;
-  opacity:.6;
+.hero-banner{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  filter:brightness(0.9);
 }
 
 /* ===== ABOUT ===== */
@@ -123,7 +104,7 @@ nav{
   color:#1a1714;
 }
 
-/* ===== SERVICES (UPDATED) ===== */
+/* ===== SERVICES ===== */
 .services{
   padding:80px 20px;
   text-align:center;
@@ -212,12 +193,9 @@ footer{
   </div>
 </nav>
 
+<!-- ===== HERO (UPDATED) ===== -->
 <section class="hero">
-  <div class="hero-content">
-    <h1>b.w fotos</h1>
-    <p>CAPTURING MOMENTS. PRESERVING STORIES.</p>
-    <div class="est">EST. 2009</div>
-  </div>
+  <img src="banner.png" alt="b.w fotos banner" class="hero-banner">
 </section>
 
 <section class="about">
