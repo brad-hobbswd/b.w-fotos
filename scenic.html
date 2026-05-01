@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Scenic Creative | b.w fotos</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+
+/* ===== GLOBAL ===== */
+body{
+  margin:0;
+  font-family:'Inter', sans-serif;
+  background:#1a1714;
+  color:#e6dccf;
+}
+
+h1,h2{
+  font-family:'Playfair Display', serif;
+  letter-spacing:1px;
+}
+
+a{
+  text-decoration:none;
+  color:#d4a5ff;
+}
+
+/* ===== NAV ===== */
+nav{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:20px 40px;
+  border-bottom:1px solid rgba(212,165,255,0.2);
+}
+
+.logo{
+  font-size:20px;
+  letter-spacing:2px;
+}
+
+.nav-links a{
+  margin-left:25px;
+  font-size:14px;
+  opacity:.8;
+}
+
+.nav-links a:hover{
+  opacity:1;
+}
+
+/* ===== HERO ===== */
+.hero{
+  padding:100px 20px 60px;
+  text-align:center;
+}
+
+.hero h1{
+  font-size:42px;
+  margin-bottom:10px;
+}
+
+.hero p{
+  color:#d4a5ff;
+  letter-spacing:2px;
+  font-size:14px;
+}
+
+/* ===== INTRO ===== */
+.intro{
+  max-width:800px;
+  margin:auto;
+  text-align:center;
+  padding:0 20px 60px;
+}
+
+.intro p{
+  line-height:1.8;
+  opacity:.9;
+}
+
+/* ===== GALLERY ===== */
+.gallery{
+  column-count:3;
+  column-gap:15px;
+  padding:20px;
+}
+
+.gallery img{
+  width:100%;
+  margin-bottom:15px;
+  border-radius:8px;
+  transition:.3s;
+}
+
+.gallery img:hover{
+  transform:scale(1.02);
+}
+
+/* ===== MOBILE ===== */
+@media(max-width:900px){
+  .gallery{
+    column-count:2;
+  }
+}
+
+@media(max-width:600px){
+  .gallery{
+    column-count:1;
+  }
+}
+
+/* ===== CTA ===== */
+.cta{
+  text-align:center;
+  padding:80px 20px;
+}
+
+.cta a{
+  display:inline-block;
+  padding:12px 25px;
+  border:1px solid #d4a5ff;
+  border-radius:25px;
+  transition:.3s;
+}
+
+.cta a:hover{
+  background:#d4a5ff;
+  color:#1a1714;
+}
+
+/* ===== FOOTER ===== */
+footer{
+  text-align:center;
+  padding:40px 20px;
+  border-top:1px solid rgba(212,165,255,0.2);
+  font-size:13px;
+  opacity:.6;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- ===== NAV ===== -->
+<nav>
+  <div class="logo">b.w fotos</div>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="#">Gallery</a>
+    <a href="#">Contact</a>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <h1>Scenic Creative</h1>
+  <p>LIGHT. LANDSCAPE. STORY.</p>
+</section>
+
+<!-- ===== INTRO ===== -->
+<section class="intro">
+  <p>
+    Scenic photography focused on capturing the beauty of environments, light, and atmosphere.
+    Each image reflects a moment, a feeling, and a perspective beyond people.
+  </p>
+
+  <p>
+    Both black and white and color are used to tell stories through landscapes and natural scenes.
+  </p>
+</section>
+
+<!-- ===== GALLERY ===== -->
+<section class="gallery">
+
+  <!-- Replace with your actual images -->
+  <img src="scenic1.jpg" alt="">
+  <img src="scenic2.jpg" alt="">
+  <img src="scenic3.jpg" alt="">
+  <img src="scenic4.jpg" alt="">
+  <img src="scenic5.jpg" alt="">
+  <img src="scenic6.jpg" alt="">
+
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="cta">
+  <h2>View More Work or Get in Touch</h2>
+  <a href="#">Contact Me</a>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  © 2026 b.w fotos | Capturing Moments. Preserving Stories.
+</footer>
+
+</body>
+</html>
