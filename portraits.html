@@ -119,6 +119,20 @@ nav{
   border-radius:8px;
 }
 
+/* ===== ARROWS ===== */
+.arrow{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  font-size:40px;
+  color:white;
+  cursor:pointer;
+  padding:20px;
+}
+
+.arrow.left{ left:20px; }
+.arrow.right{ right:20px; }
+
 /* ===== CTA ===== */
 .cta{
   text-align:center;
@@ -152,6 +166,7 @@ footer{
 
 <body>
 
+<!-- ===== NAV ===== -->
 <nav>
   <div class="logo">b.w fotos</div>
   <div class="nav-links">
@@ -162,11 +177,13 @@ footer{
   </div>
 </nav>
 
+<!-- ===== HERO ===== -->
 <section class="hero">
   <h1>Nature Portraits</h1>
   <p>AUTHENTIC. NATURAL. REAL.</p>
 </section>
 
+<!-- ===== FAYE ===== -->
 <h2 class="section-title">Grandma Faye • Age 81</h2>
 <section class="gallery">
   <img src="images/IMG_1806.jpeg" onclick="openLightbox(this.src)">
@@ -175,6 +192,7 @@ footer{
   <img src="images/IMG_1809.jpeg" onclick="openLightbox(this.src)">
 </section>
 
+<!-- ===== GABRIEL ===== -->
 <h2 class="section-title">Gabriel • Age 4.5</h2>
 <section class="gallery">
   <img src="images/IMG_1800.jpeg" onclick="openLightbox(this.src)">
@@ -183,22 +201,41 @@ footer{
   <img src="images/IMG_1803.jpeg" onclick="openLightbox(this.src)">
 </section>
 
-<!-- LIGHTBOX -->
+<!-- ===== LIGHTBOX ===== -->
 <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <span class="arrow left" onclick="prev(event)">❮</span>
   <img id="lightbox-img">
+  <span class="arrow right" onclick="next(event)">❯</span>
 </div>
 
+<!-- ===== CTA ===== -->
 <section class="cta">
   <h2>Book a Nature Portrait Session</h2>
   <a href="bookings.html">Contact Me</a>
 </section>
 
+<!-- ===== FOOTER ===== -->
 <footer>
   © 2026 b.w fotos | Capturing Moments. Preserving Stories.
 </footer>
 
 <script>
+
+const images = [
+  "images/IMG_1806.jpeg",
+  "images/IMG_1807.jpeg",
+  "images/IMG_1808.jpeg",
+  "images/IMG_1809.jpeg",
+  "images/IMG_1800.jpeg",
+  "images/IMG_1801.jpeg",
+  "images/IMG_1802.jpeg",
+  "images/IMG_1803.jpeg"
+];
+
+let index = 0;
+
 function openLightbox(src){
+  index = images.indexOf(src);
   document.getElementById("lightbox").style.display = "flex";
   document.getElementById("lightbox-img").src = src;
 }
@@ -206,6 +243,19 @@ function openLightbox(src){
 function closeLightbox(){
   document.getElementById("lightbox").style.display = "none";
 }
+
+function next(e){
+  e.stopPropagation();
+  index = (index + 1) % images.length;
+  document.getElementById("lightbox-img").src = images[index];
+}
+
+function prev(e){
+  e.stopPropagation();
+  index = (index - 1 + images.length) % images.length;
+  document.getElementById("lightbox-img").src = images[index];
+}
+
 </script>
 
 </body>
