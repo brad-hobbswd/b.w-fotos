@@ -123,7 +123,7 @@ nav{
   color:#1a1714;
 }
 
-/* ===== SERVICES ===== */
+/* ===== SERVICES (UPDATED) ===== */
 .services{
   padding:80px 20px;
   text-align:center;
@@ -131,15 +131,16 @@ nav{
 
 .services-grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit, minmax(250px,1fr));
-  gap:25px;
+  grid-template-columns:repeat(auto-fit, minmax(220px, 280px));
+  justify-content:center;
+  gap:20px;
   margin-top:40px;
 }
 
 .card{
   background:#211d19;
   border:1px solid rgba(212,165,255,0.15);
-  padding:30px;
+  padding:20px;
   border-radius:12px;
   transition:.3s;
   text-decoration:none;
@@ -154,8 +155,15 @@ nav{
 }
 
 .card h3{
-  margin-bottom:10px;
+  margin-bottom:8px;
+  font-size:18px;
   color:#f2e9dc;
+}
+
+.card p{
+  font-size:14px;
+  line-height:1.5;
+  opacity:.8;
 }
 
 /* ===== CTA ===== */
@@ -194,7 +202,6 @@ footer{
 
 <body>
 
-<!-- ===== NAV ===== -->
 <nav>
   <div class="logo">b.w fotos</div>
   <div class="nav-links">
@@ -205,7 +212,6 @@ footer{
   </div>
 </nav>
 
-<!-- ===== HERO ===== -->
 <section class="hero">
   <div class="hero-content">
     <h1>b.w fotos</h1>
@@ -214,22 +220,13 @@ footer{
   </div>
 </section>
 
-<!-- ===== ABOUT PREVIEW ===== -->
 <section class="about">
   <h2>About b.w fotos</h2>
-
-  <p>
-    Photography rooted in identity, story, and perspective.
-  </p>
-
-  <p>
-    Natural light, environment, and real moments come together to create images that feel honest and timeless.
-  </p>
-
+  <p>Photography rooted in identity, story, and perspective.</p>
+  <p>Natural light, environment, and real moments come together to create images that feel honest and timeless.</p>
   <a href="about.html" class="about-link">Read More</a>
 </section>
 
-<!-- ===== SERVICES ===== -->
 <section class="services">
   <h2>What I Capture</h2>
 
@@ -237,29 +234,27 @@ footer{
 
     <a href="portraits.html" class="card">
       <h3>Nature Portraits</h3>
-      <p>Portrait sessions captured in natural settings, focused on authentic moments, light, and environment.</p>
+      <p>Portrait sessions captured in natural settings with authentic light and emotion.</p>
     </a>
 
     <a href="mini-sessions.html" class="card">
       <h3>Mini Sessions</h3>
-      <p>Short, intentional shoots designed to capture meaningful moments without the pressure of long sessions.</p>
+      <p>Short sessions designed to capture meaningful moments with simplicity.</p>
     </a>
 
     <a href="scenic.html" class="card">
       <h3>Scenic Creative</h3>
-      <p>Artistic photography of landscapes and surroundings, in both black and white and color.</p>
+      <p>Landscape and artistic photography in both color and black and white.</p>
     </a>
 
   </div>
 </section>
 
-<!-- ===== CTA ===== -->
 <section class="cta">
   <h2>Let’s Create Something Timeless</h2>
   <a href="bookings.html">Book a Session</a>
 </section>
 
-<!-- ===== FOOTER ===== -->
 <footer>
   © 2026 b.w fotos | Capturing Moments. Preserving Stories.
 </footer>
