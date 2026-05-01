@@ -45,12 +45,13 @@ nav{
   padding:100px 20px 60px;
 }
 
-/* ===== ALBUM GRID ===== */
+/* ===== ALBUM GRID (FIXED WIDTH) ===== */
 .albums{
   display:grid;
-  grid-template-columns:repeat(auto-fit, minmax(260px,1fr));
-  gap:20px;
-  padding:40px;
+  grid-template-columns:repeat(auto-fit, minmax(240px, 320px));
+  justify-content:center;
+  gap:25px;
+  padding:60px 20px;
 }
 
 .album{
@@ -72,7 +73,7 @@ nav{
   transform:scale(1.03);
 }
 
-/* ===== OVERLAY FIX ===== */
+/* ===== OVERLAY ===== */
 .album::after{
   content:"";
   position:absolute;
@@ -87,7 +88,7 @@ nav{
   );
 }
 
-/* ===== TEXT FIX ===== */
+/* ===== TEXT ===== */
 .album-title{
   position:absolute;
   bottom:15px;
@@ -98,7 +99,7 @@ nav{
   text-shadow:0 2px 10px rgba(0,0,0,0.9);
 }
 
-/* ===== LIGHTBOX ===== */
+/* ===== LIGHTBOX (FIXED OVERLAY) ===== */
 .lightbox{
   position:fixed;
   top:0;
@@ -109,6 +110,7 @@ nav{
   display:none;
   align-items:center;
   justify-content:center;
+  z-index:9999;
 }
 
 .lightbox img{
@@ -124,6 +126,7 @@ nav{
   color:white;
   cursor:pointer;
   padding:20px;
+  z-index:10000;
 }
 
 .arrow.left{ left:20px; }
@@ -178,21 +181,19 @@ footer{
 <!-- ===== ALBUMS ===== -->
 <section class="albums">
 
-  <!-- FAYE -->
   <div class="album" onclick="openAlbum('faye', 0)">
     <img src="images/IMG_1806.jpeg" alt="Grandma Faye">
     <div class="album-title">Grandma Faye • Age 81</div>
   </div>
 
-  <!-- GABRIEL -->
   <div class="album" onclick="openAlbum('gabriel', 0)">
     <img src="images/IMG_1800.jpeg" alt="Gabriel">
-    <div class="album-title">Gabriel • Age 4</div>
+    <div class="album-title">Gabriel • Age 4.5</div>
   </div>
 
 </section>
 
-<!-- LIGHTBOX -->
+<!-- ===== LIGHTBOX ===== -->
 <div class="lightbox" id="lightbox" onclick="closeLightbox()">
   <span class="arrow left" onclick="prev(event)">❮</span>
   <img id="lightbox-img">
