@@ -70,37 +70,53 @@ nav{
   font-size:14px;
 }
 
-/* ===== INTRO ===== */
-.intro{
-  max-width:800px;
-  margin:auto;
+/* ===== SECTION TITLE ===== */
+.section-title{
   text-align:center;
-  padding:0 20px 60px;
-}
-
-.intro p{
-  line-height:1.8;
-  opacity:.9;
+  margin:40px 0 10px;
+  font-size:18px;
+  color:#d4a5ff;
 }
 
 /* ===== GALLERY ===== */
 .gallery{
   padding:20px;
   display:grid;
-  grid-template-columns:repeat(auto-fit, minmax(250px,1fr));
+  grid-template-columns:repeat(auto-fit, minmax(220px,1fr));
   gap:15px;
 }
 
 .gallery img{
   width:100%;
-  height:300px;
+  height:260px;
   object-fit:cover;
   border-radius:8px;
+  cursor:pointer;
   transition:.3s;
 }
 
 .gallery img:hover{
   transform:scale(1.03);
+}
+
+/* ===== LIGHTBOX ===== */
+.lightbox{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.95);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:999;
+}
+
+.lightbox img{
+  max-width:90%;
+  max-height:90%;
+  border-radius:8px;
 }
 
 /* ===== CTA ===== */
@@ -114,7 +130,6 @@ nav{
   padding:12px 25px;
   border:1px solid #d4a5ff;
   border-radius:25px;
-  transition:.3s;
 }
 
 .cta a:hover{
@@ -137,7 +152,6 @@ footer{
 
 <body>
 
-<!-- ===== NAV ===== -->
 <nav>
   <div class="logo">b.w fotos</div>
   <div class="nav-links">
@@ -148,41 +162,51 @@ footer{
   </div>
 </nav>
 
-<!-- ===== HERO ===== -->
 <section class="hero">
   <h1>Nature Portraits</h1>
   <p>AUTHENTIC. NATURAL. REAL.</p>
 </section>
 
-<!-- ===== INTRO ===== -->
-<section class="intro">
-  <p>
-    Portraits captured in natural environments where light, setting, and emotion come together.
-    Each session focuses on real moments, not forced poses, creating images that feel honest and timeless.
-  </p>
-</section>
-
-<!-- ===== GALLERY ===== -->
+<h2 class="section-title">Grandma Faye • Age 81</h2>
 <section class="gallery">
-
-  <!-- Replace these with your actual images -->
-  <img src="portrait1.jpg" alt="">
-  <img src="portrait2.jpg" alt="">
-  <img src="portrait3.jpg" alt="">
-  <img src="portrait4.jpg" alt="">
-
+  <img src="images/faye1.jpg" onclick="openLightbox(this.src)">
+  <img src="images/faye2.jpg" onclick="openLightbox(this.src)">
+  <img src="images/faye3.jpg" onclick="openLightbox(this.src)">
+  <img src="images/faye4.jpg" onclick="openLightbox(this.src)">
 </section>
 
-<!-- ===== CTA ===== -->
+<h2 class="section-title">Gabriel • Age 4.5</h2>
+<section class="gallery">
+  <img src="images/gabriel1.jpg" onclick="openLightbox(this.src)">
+  <img src="images/gabriel2.jpg" onclick="openLightbox(this.src)">
+  <img src="images/gabriel3.jpg" onclick="openLightbox(this.src)">
+  <img src="images/gabriel4.jpg" onclick="openLightbox(this.src)">
+</section>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <img id="lightbox-img">
+</div>
+
 <section class="cta">
   <h2>Book a Nature Portrait Session</h2>
   <a href="bookings.html">Contact Me</a>
 </section>
 
-<!-- ===== FOOTER ===== -->
 <footer>
   © 2026 b.w fotos | Capturing Moments. Preserving Stories.
 </footer>
+
+<script>
+function openLightbox(src){
+  document.getElementById("lightbox").style.display = "flex";
+  document.getElementById("lightbox-img").src = src;
+}
+
+function closeLightbox(){
+  document.getElementById("lightbox").style.display = "none";
+}
+</script>
 
 </body>
 </html>
