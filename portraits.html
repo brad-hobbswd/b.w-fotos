@@ -35,6 +35,8 @@ nav{
   margin-left:25px;
   font-size:14px;
   opacity:.8;
+  text-decoration:none;
+  color:#d4a5ff;
 }
 
 /* ===== HERO ===== */
@@ -54,13 +56,15 @@ nav{
 .album{
   position:relative;
   cursor:pointer;
+  overflow:hidden;
+  border-radius:10px;
 }
 
 .album img{
   width:100%;
   height:300px;
   object-fit:cover;
-  border-radius:10px;
+  display:block;
   transition:.3s;
 }
 
@@ -68,13 +72,30 @@ nav{
   transform:scale(1.03);
 }
 
-/* overlay title */
+/* ===== OVERLAY FIX ===== */
+.album::after{
+  content:"";
+  position:absolute;
+  bottom:0;
+  left:0;
+  width:100%;
+  height:55%;
+  background:linear-gradient(
+    to top,
+    rgba(0,0,0,0.8),
+    rgba(0,0,0,0)
+  );
+}
+
+/* ===== TEXT FIX ===== */
 .album-title{
   position:absolute;
   bottom:15px;
   left:15px;
-  color:white;
+  color:#ffffff;
   font-size:18px;
+  z-index:2;
+  text-shadow:0 2px 10px rgba(0,0,0,0.9);
 }
 
 /* ===== LIGHTBOX ===== */
@@ -127,6 +148,7 @@ nav{
   color:#1a1714;
 }
 
+/* ===== FOOTER ===== */
 footer{
   text-align:center;
   padding:40px;
@@ -158,14 +180,14 @@ footer{
 
   <!-- FAYE -->
   <div class="album" onclick="openAlbum('faye', 0)">
-    <img src="images/IMG_1806.jpeg">
+    <img src="images/IMG_1806.jpeg" alt="Grandma Faye">
     <div class="album-title">Grandma Faye • Age 81</div>
   </div>
 
   <!-- GABRIEL -->
   <div class="album" onclick="openAlbum('gabriel', 0)">
-    <img src="images/IMG_1800.jpeg">
-    <div class="album-title">Gabriel • Age 4.5</div>
+    <img src="images/IMG_1800.jpeg" alt="Gabriel">
+    <div class="album-title">Gabriel • Age 4</div>
   </div>
 
 </section>
