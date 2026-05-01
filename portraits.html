@@ -21,37 +21,75 @@ body{
 
 h1,h2{
   font-family:'Playfair Display', serif;
+  letter-spacing:1px;
+}
+
+a{
+  text-decoration:none;
+  color:#d4a5ff;
 }
 
 /* ===== NAV ===== */
 nav{
   display:flex;
   justify-content:space-between;
+  align-items:center;
   padding:20px 40px;
   border-bottom:1px solid rgba(212,165,255,0.2);
+}
+
+.logo{
+  font-size:20px;
+  letter-spacing:2px;
 }
 
 .nav-links a{
   margin-left:25px;
   font-size:14px;
   opacity:.8;
-  text-decoration:none;
-  color:#d4a5ff;
+}
+
+.nav-links a:hover{
+  opacity:1;
 }
 
 /* ===== HERO ===== */
 .hero{
-  text-align:center;
   padding:100px 20px 60px;
+  text-align:center;
 }
 
-/* ===== ALBUM GRID (FIXED WIDTH) ===== */
+.hero h1{
+  font-size:42px;
+  margin-bottom:10px;
+}
+
+.hero p{
+  color:#d4a5ff;
+  letter-spacing:2px;
+  font-size:14px;
+}
+
+/* ===== INTRO ===== */
+.intro{
+  max-width:800px;
+  margin:auto;
+  text-align:center;
+  padding:0 20px 60px;
+}
+
+.intro p{
+  line-height:1.8;
+  opacity:.9;
+}
+
+/* ===== ALBUMS ===== */
 .albums{
   display:grid;
   grid-template-columns:repeat(auto-fit, minmax(240px, 320px));
   justify-content:center;
   gap:25px;
-  padding:60px 20px;
+  padding:40px 20px;
 }
 
 .album{
@@ -65,7 +103,6 @@ nav{
   width:100%;
   height:300px;
   object-fit:cover;
-  display:block;
   transition:.3s;
 }
 
@@ -73,33 +110,25 @@ nav{
   transform:scale(1.03);
 }
 
-/* ===== OVERLAY ===== */
 .album::after{
   content:"";
   position:absolute;
   bottom:0;
-  left:0;
   width:100%;
   height:55%;
-  background:linear-gradient(
-    to top,
-    rgba(0,0,0,0.8),
-    rgba(0,0,0,0)
-  );
+  background:linear-gradient(to top, rgba(0,0,0,0.8), transparent);
 }
 
-/* ===== TEXT ===== */
 .album-title{
   position:absolute;
   bottom:15px;
   left:15px;
-  color:#ffffff;
+  color:#fff;
   font-size:18px;
   z-index:2;
-  text-shadow:0 2px 10px rgba(0,0,0,0.9);
 }
 
-/* ===== LIGHTBOX (FIXED OVERLAY) ===== */
+/* ===== LIGHTBOX ===== */
 .lightbox{
   position:fixed;
   top:0;
@@ -126,7 +155,6 @@ nav{
   color:white;
   cursor:pointer;
   padding:20px;
-  z-index:10000;
 }
 
 .arrow.left{ left:20px; }
@@ -139,11 +167,11 @@ nav{
 }
 
 .cta a{
+  display:inline-block;
   padding:12px 25px;
   border:1px solid #d4a5ff;
   border-radius:25px;
-  text-decoration:none;
-  color:#d4a5ff;
+  transition:.3s;
 }
 
 .cta a:hover{
@@ -154,7 +182,9 @@ nav{
 /* ===== FOOTER ===== */
 footer{
   text-align:center;
-  padding:40px;
+  padding:40px 20px;
+  border-top:1px solid rgba(212,165,255,0.2);
+  font-size:13px;
   opacity:.6;
 }
 
@@ -164,8 +194,9 @@ footer{
 
 <body>
 
+<!-- NAV -->
 <nav>
-  <div>b.w fotos</div>
+  <div class="logo">b.w fotos</div>
   <div class="nav-links">
     <a href="index.html">Home</a>
     <a href="about.html">About</a>
@@ -174,39 +205,51 @@ footer{
   </div>
 </nav>
 
+<!-- HERO -->
 <section class="hero">
   <h1>Nature Portraits</h1>
+  <p>AUTHENTIC. NATURAL. REAL.</p>
 </section>
 
-<!-- ===== ALBUMS ===== -->
+<!-- INTRO -->
+<section class="intro">
+  <p>
+    Portraits captured in natural environments where light, setting, and emotion come together.
+    Each session focuses on real moments, not forced poses, creating images that feel honest and timeless.
+  </p>
+</section>
+
+<!-- ALBUMS -->
 <section class="albums">
 
-  <div class="album" onclick="openAlbum('faye', 0)">
-    <img src="images/IMG_1806.jpeg" alt="Grandma Faye">
+  <div class="album" onclick="openAlbum('faye')">
+    <img src="images/IMG_1806.jpeg">
     <div class="album-title">Grandma Faye • Age 81</div>
   </div>
 
-  <div class="album" onclick="openAlbum('gabriel', 0)">
-    <img src="images/IMG_1800.jpeg" alt="Gabriel">
+  <div class="album" onclick="openAlbum('gabriel')">
+    <img src="images/IMG_1800.jpeg">
     <div class="album-title">Gabriel • Age 4.5</div>
   </div>
 
 </section>
 
-<!-- ===== LIGHTBOX ===== -->
+<!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox" onclick="closeLightbox()">
   <span class="arrow left" onclick="prev(event)">❮</span>
   <img id="lightbox-img">
   <span class="arrow right" onclick="next(event)">❯</span>
 </div>
 
+<!-- CTA -->
 <section class="cta">
   <h2>Book a Nature Portrait Session</h2>
   <a href="bookings.html">Contact Me</a>
 </section>
 
+<!-- FOOTER -->
 <footer>
-  © 2026 b.w fotos
+  © 2026 b.w fotos | Capturing Moments. Preserving Stories.
 </footer>
 
 <script>
@@ -229,9 +272,9 @@ const albums = {
 let currentAlbum = [];
 let index = 0;
 
-function openAlbum(name, i){
+function openAlbum(name){
   currentAlbum = albums[name];
-  index = i;
+  index = 0;
   document.getElementById("lightbox").style.display = "flex";
   document.getElementById("lightbox-img").src = currentAlbum[index];
 }
