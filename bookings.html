@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Book a Session | b.w fotos</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+
+/* ===== GLOBAL ===== */
+body{
+  margin:0;
+  font-family:'Inter', sans-serif;
+  background:#1a1714;
+  color:#e6dccf;
+}
+
+h1,h2,h3{
+  font-family:'Playfair Display', serif;
+  letter-spacing:1px;
+}
+
+a{
+  text-decoration:none;
+  color:#d4a5ff;
+}
+
+/* ===== NAV ===== */
+nav{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:20px 40px;
+  border-bottom:1px solid rgba(212,165,255,0.2);
+}
+
+.logo{
+  font-size:20px;
+  letter-spacing:2px;
+}
+
+.nav-links a{
+  margin-left:25px;
+  font-size:14px;
+  opacity:.8;
+}
+
+.nav-links a:hover{
+  opacity:1;
+}
+
+/* ===== HERO ===== */
+.hero{
+  text-align:center;
+  padding:100px 20px 40px;
+}
+
+.hero h1{
+  font-size:42px;
+  margin-bottom:10px;
+}
+
+.hero p{
+  color:#d4a5ff;
+  letter-spacing:2px;
+}
+
+/* ===== BOOKING CARD ===== */
+.booking-card{
+  max-width:700px;
+  margin:40px auto;
+  background:#211d19;
+  padding:40px;
+  border-radius:12px;
+  border:1px solid rgba(212,165,255,0.2);
+  text-align:center;
+}
+
+/* ===== FORM ===== */
+form{
+  display:flex;
+  flex-direction:column;
+  gap:15px;
+  margin-top:20px;
+}
+
+input, textarea, select{
+  padding:12px;
+  border:none;
+  border-radius:8px;
+  background:#2a241f;
+  color:#e6dccf;
+  font-family:'Inter', sans-serif;
+}
+
+button{
+  padding:14px;
+  border:none;
+  border-radius:25px;
+  background:#d4a5ff;
+  color:#1a1714;
+  cursor:pointer;
+  transition:.3s;
+}
+
+button:hover{
+  opacity:.9;
+}
+
+/* ===== FOOTER ===== */
+footer{
+  text-align:center;
+  padding:40px;
+  border-top:1px solid rgba(212,165,255,0.2);
+  font-size:13px;
+  opacity:.6;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- ===== NAV ===== -->
+<nav>
+  <div class="logo">b.w fotos</div>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="portraits.html">Portraits</a>
+    <a href="mini-sessions.html">Mini Sessions</a>
+    <a href="scenic.html">Scenic</a>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <h1>Book a Session</h1>
+  <p>SIMPLE. CLEAR. CONNECTED.</p>
+</section>
+
+<!-- ===== BOOKING FORM ===== -->
+<section class="booking-card">
+
+  <h2>Request Your Session</h2>
+
+  <p>
+    Fill out the form below to request your session.  
+    You will receive confirmation once your date is approved.
+  </p>
+
+  <form 
+    action="https://docs.google.com/forms/d/e/1FAIpQLScJiZu-JQJEJx7YpF1LQE3MdShybpF902qouPUPXXDXB21ewA/formResponse" 
+    method="POST" 
+    target="_blank">
+
+    <input 
+      type="text" 
+      name="entry.2025350842" 
+      placeholder="Your Name" 
+      required>
+
+    <input 
+      type="email" 
+      name="entry.601827311" 
+      placeholder="Email Address" 
+      required>
+
+    <input 
+      type="text" 
+      name="entry.244855288" 
+      placeholder="Phone Number">
+
+    <select name="entry.202428847" required>
+      <option value="">Select Session Type</option>
+      <option>Portraits</option>
+      <option>Mini Sessions</option>
+      <option>Scenic</option>
+    </select>
+
+    <input 
+      type="date" 
+      name="entry.222132244" 
+      required>
+
+    <input 
+      type="time" 
+      name="entry.131441332" 
+      required>
+
+    <textarea 
+      name="entry.221970120" 
+      placeholder="Tell me what you're looking for"></textarea>
+
+    <button type="submit">Submit Request</button>
+
+  </form>
+
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  © 2026 b.w fotos | Capturing Moments. Preserving Stories.
+</footer>
+
+</body>
+</html>
