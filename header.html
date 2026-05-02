@@ -1,20 +1,137 @@
-<nav>
+<nav class="site-header">
 
   <div class="logo">b.w fotos</div>
 
-  <div class="nav-links">
+  <!-- HAMBURGER -->
+  <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+  <div class="nav-links" id="navLinks">
     <a href="index.html">Home</a>
     <a href="about.html">About</a>
-    <a href="gallery.html">Gallery</a>
-    <a href="portraits.html">Portraits</a>
-    <a href="mini-sessions.html">Mini Sessions</a>
-    <a href="scenic.html">Scenic</a>
+
+    <!-- DROPDOWN -->
+    <div class="dropdown">
+      <a href="gallery.html">Gallery ▾</a>
+
+      <div class="dropdown-content">
+        <a href="portraits.html">Portraits</a>
+        <a href="mini-sessions.html">Mini Sessions</a>
+        <a href="scenic.html">Scenic</a>
+      </div>
+    </div>
+
     <a href="bookings.html">Contact</a>
   </div>
 
 </nav>
 
+<style>
+
+/* ===== HEADER ===== */
+.site-header{
+  position:sticky;
+  top:0;
+  z-index:9999;
+  background:#1a1714;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:20px 40px;
+  border-bottom:1px solid rgba(212,165,255,0.2);
+}
+
+/* ===== NAV LINKS ===== */
+.nav-links{
+  display:flex;
+  align-items:center;
+}
+
+.nav-links a{
+  margin-left:25px;
+  font-size:14px;
+  opacity:.8;
+  color:#e6dccf;
+}
+
+/* ===== DROPDOWN ===== */
+.dropdown{
+  position:relative;
+}
+
+.dropdown-content{
+  display:none;
+  position:absolute;
+  top:35px;
+  left:0;
+  background:#211d19;
+  border:1px solid rgba(212,165,255,0.2);
+  border-radius:8px;
+  min-width:160px;
+}
+
+.dropdown-content a{
+  display:block;
+  padding:10px;
+  margin:0;
+}
+
+.dropdown:hover .dropdown-content{
+  display:block;
+}
+
+/* ===== HAMBURGER ===== */
+.menu-toggle{
+  display:none;
+  font-size:24px;
+  cursor:pointer;
+}
+
+/* ===== MOBILE ===== */
+@media(max-width:768px){
+
+  .menu-toggle{
+    display:block;
+  }
+
+  .nav-links{
+    position:absolute;
+    top:70px;
+    right:0;
+    width:220px;
+    background:#1a1714;
+    flex-direction:column;
+    align-items:flex-start;
+    padding:20px;
+    border-left:1px solid rgba(212,165,255,0.2);
+    display:none;
+  }
+
+  .nav-links a{
+    margin:10px 0;
+  }
+
+  .nav-links.active{
+    display:flex;
+  }
+
+  .dropdown-content{
+    position:static;
+    border:none;
+    background:none;
+  }
+
+  .dropdown-content a{
+    padding-left:10px;
+    opacity:.7;
+  }
+
+}
+
+</style>
+
 <script>
+
+/* ===== ACTIVE LINK ===== */
 const links = document.querySelectorAll('.nav-links a');
 const current = window.location.pathname.split("/").pop();
 
@@ -24,4 +141,10 @@ links.forEach(link => {
     link.style.color = "#d4a5ff";
   }
 });
+
+/* ===== MOBILE TOGGLE ===== */
+function toggleMenu(){
+  document.getElementById("navLinks").classList.toggle("active");
+}
+
 </script>
