@@ -47,12 +47,22 @@ nav{
   padding:50px 20px 10px;
 }
 
+/* ===== INTRO TEXT ===== */
+.intro{
+  max-width:700px;
+  margin:auto;
+  text-align:center;
+  padding:10px 20px 30px;
+  opacity:.85;
+}
+
 /* ===== ALBUM GRID ===== */
 .albums{
   display:grid;
-  grid-template-columns:repeat(auto-fit, minmax(240px,1fr));
-  gap:20px;
-  padding:30px;
+  grid-template-columns:repeat(auto-fit, minmax(260px, 300px));
+  justify-content:center;
+  gap:25px;
+  padding:40px 20px;
 }
 
 .album{
@@ -76,9 +86,9 @@ nav{
   text-align:center;
 }
 
-/* ===== THUMBNAIL GRID ===== */
+/* ===== THUMBNAILS ===== */
 .gallery{
-  display:grid;
+  display:none;
   grid-template-columns:repeat(auto-fit, minmax(160px,1fr));
   gap:10px;
   padding:20px;
@@ -160,37 +170,43 @@ footer{
   <h1>Gallery</h1>
 </section>
 
+<!-- INTRO -->
+<section class="intro">
+  <p>Every image carries a moment, a place, a story worth remembering.</p>
+  <p>Explore the albums below and step into the scenes as they were captured.</p>
+</section>
+
 <!-- ALBUMS -->
 <section class="albums">
 
   <div class="album" onclick="openAlbum('embassy')">
     <img src="images/IMG_1750.jpeg">
-    <div class="album-title">Embassy Suites</div>
+    <div class="album-title">Embassy Suites • 2021</div>
   </div>
 
   <div class="album" onclick="openAlbum('falls')">
     <img src="images/IMG_1754.jpeg">
-    <div class="album-title">76 Falls</div>
+    <div class="album-title">76 Falls • 2020</div>
   </div>
 
   <div class="album" onclick="openAlbum('rv')">
     <img src="images/IMG_1764.jpeg">
-    <div class="album-title">Thompson RV</div>
+    <div class="album-title">Thompson RV • 2020</div>
   </div>
 
   <div class="album" onclick="openAlbum('school')">
     <img src="images/IMG_1770.jpeg">
-    <div class="album-title">Old Flat Lick</div>
+    <div class="album-title">Old Flat Lick • 2019</div>
   </div>
 
   <div class="album" onclick="openAlbum('park')">
     <img src="images/IMG_1784.jpeg">
-    <div class="album-title">Random Park</div>
+    <div class="album-title">Random Park • 2019</div>
   </div>
 
   <div class="album" onclick="openAlbum('rock')">
     <img src="images/IMG_1797.jpeg">
-    <div class="album-title">Rockcastle</div>
+    <div class="album-title">Rockcastle • 2019</div>
   </div>
 
   <div class="album" onclick="openAlbum('extra')">
@@ -218,44 +234,13 @@ footer{
 <script>
 
 const albums = {
-
-  embassy:[
-    "images/IMG_1750.jpeg","images/IMG_1751.jpeg","images/IMG_1752.jpeg","images/IMG_1753.jpeg"
-  ],
-
-  falls:[
-    "images/IMG_1754.jpeg","images/IMG_1755.jpeg","images/IMG_1756.jpeg","images/IMG_1757.jpeg",
-    "images/IMG_1758.jpeg","images/IMG_1759.jpeg","images/IMG_1760.jpeg","images/IMG_1761.jpeg",
-    "images/IMG_1762.jpeg","images/IMG_1763.jpeg"
-  ],
-
-  rv:[
-    "images/IMG_1764.jpeg","images/IMG_1765.jpeg","images/IMG_1766.jpeg",
-    "images/IMG_1767.jpeg","images/IMG_1768.jpeg","images/IMG_1769.jpeg"
-  ],
-
-  school:[
-    "images/IMG_1770.jpeg","images/IMG_1771.jpeg","images/IMG_1772.jpeg","images/IMG_1773.jpeg",
-    "images/IMG_1774.jpeg","images/IMG_1775.jpeg","images/IMG_1776.jpeg","images/IMG_1777.jpeg",
-    "images/IMG_1778.jpeg","images/IMG_1779.jpeg","images/IMG_1780.jpeg","images/IMG_1781.jpeg",
-    "images/IMG_1782.jpeg","images/IMG_1783.jpeg"
-  ],
-
-  park:[
-    "images/IMG_1784.jpeg","images/IMG_1785.jpeg","images/IMG_1786.jpeg","images/IMG_1787.jpeg",
-    "images/IMG_1788.jpeg","images/IMG_1789.jpeg","images/IMG_1790.jpeg","images/IMG_1791.jpeg",
-    "images/IMG_1792.jpeg","images/IMG_1793.jpeg","images/IMG_1794.jpeg","images/IMG_1795.jpeg",
-    "images/IMG_1796.jpeg"
-  ],
-
-  rock:[
-    "images/IMG_1797.jpeg","images/IMG_1798.jpeg","images/IMG_1799.jpeg"
-  ],
-
-  extra:[
-    "images/IMG_1804.jpeg","images/IMG_1805.jpeg"
-  ]
-
+  embassy:["images/IMG_1750.jpeg","images/IMG_1751.jpeg","images/IMG_1752.jpeg","images/IMG_1753.jpeg"],
+  falls:["images/IMG_1754.jpeg","images/IMG_1755.jpeg","images/IMG_1756.jpeg","images/IMG_1757.jpeg","images/IMG_1758.jpeg","images/IMG_1759.jpeg","images/IMG_1760.jpeg","images/IMG_1761.jpeg","images/IMG_1762.jpeg","images/IMG_1763.jpeg"],
+  rv:["images/IMG_1764.jpeg","images/IMG_1765.jpeg","images/IMG_1766.jpeg","images/IMG_1767.jpeg","images/IMG_1768.jpeg","images/IMG_1769.jpeg"],
+  school:["images/IMG_1770.jpeg","images/IMG_1771.jpeg","images/IMG_1772.jpeg","images/IMG_1773.jpeg","images/IMG_1774.jpeg","images/IMG_1775.jpeg","images/IMG_1776.jpeg","images/IMG_1777.jpeg","images/IMG_1778.jpeg","images/IMG_1779.jpeg","images/IMG_1780.jpeg","images/IMG_1781.jpeg","images/IMG_1782.jpeg","images/IMG_1783.jpeg"],
+  park:["images/IMG_1784.jpeg","images/IMG_1785.jpeg","images/IMG_1786.jpeg","images/IMG_1787.jpeg","images/IMG_1788.jpeg","images/IMG_1789.jpeg","images/IMG_1790.jpeg","images/IMG_1791.jpeg","images/IMG_1792.jpeg","images/IMG_1793.jpeg","images/IMG_1794.jpeg","images/IMG_1795.jpeg","images/IMG_1796.jpeg"],
+  rock:["images/IMG_1797.jpeg","images/IMG_1798.jpeg","images/IMG_1799.jpeg"],
+  extra:["images/IMG_1804.jpeg","images/IMG_1805.jpeg"]
 };
 
 let currentAlbum = [];
@@ -270,7 +255,12 @@ function openAlbum(name){
     container.innerHTML += `<img src="${img}" onclick="openLightbox(${i})">`;
   });
 
-  window.scrollTo({top:container.offsetTop, behavior:"smooth"});
+  container.style.display = "grid";
+
+  window.scrollTo({
+    top: container.offsetTop - 40,
+    behavior: "smooth"
+  });
 }
 
 function openLightbox(i){
@@ -293,14 +283,28 @@ function closeLightbox(){
   document.getElementById("lightbox").style.display="none";
 }
 
-/* keyboard */
+/* CLICK OUTSIDE CLOSE */
+document.addEventListener("click", function(e){
+  const albumView = document.getElementById("albumView");
+  const albumsSection = document.querySelector(".albums");
+
+  if(
+    albumView.style.display === "grid" &&
+    !albumView.contains(e.target) &&
+    !albumsSection.contains(e.target)
+  ){
+    albumView.style.display = "none";
+  }
+});
+
+/* KEYBOARD */
 document.addEventListener("keydown", e=>{
   if(e.key==="ArrowRight") nextImage();
   if(e.key==="ArrowLeft") prevImage();
   if(e.key==="Escape") closeLightbox();
 });
 
-/* swipe */
+/* SWIPE */
 let startX=0;
 
 document.getElementById("lightbox").addEventListener("touchstart",e=>{
