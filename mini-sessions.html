@@ -103,7 +103,7 @@ nav{
   opacity:.85;
 }
 
-/* ===== BANNER SECTION ===== */
+/* ===== BANNER ===== */
 .mini-banner{
   max-width:1000px;
   margin:0 auto 60px;
@@ -118,19 +118,27 @@ nav{
   border:1px solid rgba(212,165,255,0.15);
 }
 
-/* ===== GALLERY ===== */
+/* ===== GALLERY (FIXED) ===== */
 .gallery{
+  max-width:1000px;
+  margin:0 auto 60px;
+  padding:0 20px;
+
   display:grid;
-  grid-template-columns:repeat(auto-fit, minmax(250px,1fr));
+  grid-template-columns:repeat(auto-fit, minmax(220px,1fr));
   gap:15px;
-  padding:20px;
 }
 
 .gallery img{
   width:100%;
-  height:260px;
+  height:220px;
   object-fit:cover;
   border-radius:8px;
+  transition:.3s;
+}
+
+.gallery img:hover{
+  transform:scale(1.03);
 }
 
 /* ===== CTA ===== */
@@ -167,7 +175,6 @@ footer{
 
 <body>
 
-<!-- ===== NAV ===== -->
 <nav>
   <div class="logo">b.w fotos</div>
   <div class="nav-links">
@@ -178,13 +185,11 @@ footer{
   </div>
 </nav>
 
-<!-- ===== HERO ===== -->
 <section class="hero">
   <h1>Mini Sessions</h1>
   <p>SIMPLE. MEANINGFUL. TIMELESS.</p>
 </section>
 
-<!-- ===== INTRO ===== -->
 <section class="intro">
   <p>
     Mini sessions are short, intentional shoots designed to capture meaningful moments without the pressure of a full session.
@@ -195,7 +200,6 @@ footer{
   </p>
 </section>
 
-<!-- ===== DETAILS ===== -->
 <section class="details">
 
   <h3>Session Details</h3>
@@ -211,12 +215,10 @@ footer{
 
 </section>
 
-<!-- ===== BANNER ===== -->
 <section class="mini-banner">
   <img src="images/EFDF8303-02C2-4B87-9185-630312C64A48.png" alt="Mini Sessions Coming Soon">
 </section>
 
-<!-- ===== GALLERY ===== -->
 <section class="gallery">
 
   <img src="images/B0FD1B92-E49A-4130-9D11-09BB3DFCFD19.png" alt="">
@@ -226,13 +228,11 @@ footer{
 
 </section>
 
-<!-- ===== CTA ===== -->
 <section class="cta">
   <h2>Ready to Book a Mini Session?</h2>
   <a href="bookings.html">Contact Me</a>
 </section>
 
-<!-- ===== FOOTER ===== -->
 <footer>
   © 2026 b.w fotos | Capturing Moments. Preserving Stories.
 </footer>
