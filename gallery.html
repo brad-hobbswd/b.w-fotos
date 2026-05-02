@@ -21,6 +21,7 @@ body{
 
 h1,h2{
   font-family:'Playfair Display', serif;
+  letter-spacing:1px;
 }
 
 a{
@@ -28,41 +29,67 @@ a{
   color:#d4a5ff;
 }
 
-/* ===== NAV ===== */
+/* ===== NAV (MATCHES SITE) ===== */
 nav{
   display:flex;
   justify-content:space-between;
+  align-items:center;
   padding:20px 40px;
   border-bottom:1px solid rgba(212,165,255,0.2);
 }
 
+.logo{
+  font-size:20px;
+  letter-spacing:2px;
+}
+
 .nav-links a{
-  margin-left:20px;
+  margin-left:25px;
+  font-size:14px;
   opacity:.8;
+}
+
+.nav-links a:hover{
+  opacity:1;
+  color:#d4a5ff;
 }
 
 /* ===== HERO ===== */
 .hero{
+  padding:60px 20px 20px;
   text-align:center;
-  padding:50px 20px 10px;
 }
 
-/* ===== INTRO TEXT ===== */
+.hero h1{
+  font-size:42px;
+}
+
+.hero p{
+  color:#d4a5ff;
+  letter-spacing:2px;
+  font-size:14px;
+}
+
+/* ===== INTRO ===== */
 .intro{
-  max-width:700px;
+  max-width:800px;
   margin:auto;
   text-align:center;
-  padding:10px 20px 30px;
+  padding:0 20px 40px;
+}
+
+.intro p{
+  line-height:1.8;
   opacity:.85;
 }
 
-/* ===== ALBUM GRID ===== */
+/* ===== ALBUMS ===== */
 .albums{
   display:grid;
-  grid-template-columns:repeat(auto-fit, minmax(260px, 300px));
+  grid-template-columns:repeat(auto-fit, minmax(240px, 300px));
   justify-content:center;
-  gap:25px;
-  padding:40px 20px;
+  gap:20px;
+  padding:20px;
 }
 
 .album{
@@ -72,9 +99,9 @@ nav{
 
 .album img{
   width:100%;
-  height:260px;
+  height:220px;
   object-fit:cover;
-  border-radius:12px;
+  border-radius:10px;
 }
 
 .album-title{
@@ -84,13 +111,14 @@ nav{
   background:rgba(0,0,0,0.6);
   padding:10px;
   text-align:center;
+  font-size:14px;
 }
 
 /* ===== THUMBNAILS ===== */
 .gallery{
   display:none;
-  grid-template-columns:repeat(auto-fit, minmax(160px,1fr));
-  gap:10px;
+  grid-template-columns:repeat(auto-fit, minmax(180px,1fr));
+  gap:12px;
   padding:20px;
 }
 
@@ -100,6 +128,11 @@ nav{
   object-fit:cover;
   border-radius:8px;
   cursor:pointer;
+  transition:.3s;
+}
+
+.gallery img:hover{
+  transform:scale(1.03);
 }
 
 /* ===== LIGHTBOX ===== */
@@ -113,7 +146,7 @@ nav{
   display:none;
   align-items:center;
   justify-content:center;
-  z-index:9999;
+  z-index:999;
 }
 
 .lightbox img{
@@ -141,10 +174,12 @@ nav{
 .prev{ left:20px; }
 .next{ right:20px; }
 
-/* ===== FOOTER ===== */
+/* ===== FOOTER (MATCHES SITE) ===== */
 footer{
   text-align:center;
-  padding:30px;
+  padding:40px 20px;
+  border-top:1px solid rgba(212,165,255,0.2);
+  font-size:13px;
   opacity:.6;
 }
 
@@ -156,24 +191,29 @@ footer{
 
 <!-- NAV -->
 <nav>
-  <div>b.w fotos</div>
+  <div class="logo">b.w fotos</div>
   <div class="nav-links">
     <a href="index.html">Home</a>
     <a href="about.html">About</a>
-    <a href="portraits.html">Portraits</a>
-    <a href="bookings.html">Book</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="bookings.html">Contact</a>
   </div>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
   <h1>Gallery</h1>
+  <p>CAPTURING MOMENTS ACROSS EVERY STORY</p>
 </section>
 
 <!-- INTRO -->
 <section class="intro">
-  <p>Every image carries a moment, a place, a story worth remembering.</p>
-  <p>Explore the albums below and step into the scenes as they were captured.</p>
+  <p>
+    Every image carries a moment, a place, a story worth remembering.
+  </p>
+  <p>
+    Explore the albums below and step into the scenes as they were captured.
+  </p>
 </section>
 
 <!-- ALBUMS -->
@@ -227,8 +267,9 @@ footer{
   <span class="next" onclick="nextImage()">&#10095;</span>
 </div>
 
+<!-- FOOTER -->
 <footer>
-  © 2026 b.w fotos
+  © 2026 b.w fotos | Capturing Moments. Preserving Stories.
 </footer>
 
 <script>
@@ -256,11 +297,7 @@ function openAlbum(name){
   });
 
   container.style.display = "grid";
-
-  window.scrollTo({
-    top: container.offsetTop - 40,
-    behavior: "smooth"
-  });
+  window.scrollTo({ top: container.offsetTop - 40, behavior: "smooth" });
 }
 
 function openLightbox(i){
@@ -283,7 +320,6 @@ function closeLightbox(){
   document.getElementById("lightbox").style.display="none";
 }
 
-/* CLICK OUTSIDE CLOSE */
 document.addEventListener("click", function(e){
   const albumView = document.getElementById("albumView");
   const albumsSection = document.querySelector(".albums");
@@ -295,26 +331,6 @@ document.addEventListener("click", function(e){
   ){
     albumView.style.display = "none";
   }
-});
-
-/* KEYBOARD */
-document.addEventListener("keydown", e=>{
-  if(e.key==="ArrowRight") nextImage();
-  if(e.key==="ArrowLeft") prevImage();
-  if(e.key==="Escape") closeLightbox();
-});
-
-/* SWIPE */
-let startX=0;
-
-document.getElementById("lightbox").addEventListener("touchstart",e=>{
-  startX=e.touches[0].clientX;
-});
-
-document.getElementById("lightbox").addEventListener("touchend",e=>{
-  let endX=e.changedTouches[0].clientX;
-  if(endX-startX>50) prevImage();
-  if(startX-endX>50) nextImage();
 });
 
 </script>
