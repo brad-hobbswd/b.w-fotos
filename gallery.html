@@ -21,8 +21,6 @@ body{
 
 h1,h2{
   font-family:'Playfair Display', serif;
-  letter-spacing:1px;
-  margin-bottom:10px;
 }
 
 a{
@@ -34,57 +32,64 @@ a{
 nav{
   display:flex;
   justify-content:space-between;
-  align-items:center;
   padding:20px 40px;
   border-bottom:1px solid rgba(212,165,255,0.2);
 }
 
-.logo{
-  font-size:20px;
-}
-
 .nav-links a{
-  margin-left:25px;
-  font-size:14px;
+  margin-left:20px;
   opacity:.8;
 }
 
 /* ===== HERO ===== */
 .hero{
   text-align:center;
-  padding:60px 20px 20px;
+  padding:50px 20px 10px;
 }
 
-.hero p{
-  color:#d4a5ff;
+/* ===== ALBUM GRID ===== */
+.albums{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(240px,1fr));
+  gap:20px;
+  padding:30px;
 }
 
-/* ===== SECTION TITLE ===== */
-.section-title{
+.album{
+  position:relative;
+  cursor:pointer;
+}
+
+.album img{
+  width:100%;
+  height:260px;
+  object-fit:cover;
+  border-radius:12px;
+}
+
+.album-title{
+  position:absolute;
+  bottom:0;
+  width:100%;
+  background:rgba(0,0,0,0.6);
+  padding:10px;
   text-align:center;
-  margin:30px 0 10px;
-  color:#d4a5ff;
 }
 
-/* ===== GALLERY ===== */
+/* ===== THUMBNAIL GRID ===== */
 .gallery{
   display:grid;
-  grid-template-columns:repeat(auto-fit, minmax(180px,1fr));
-  gap:12px;
+  grid-template-columns:repeat(auto-fit, minmax(160px,1fr));
+  gap:10px;
   padding:20px;
 }
 
-.gallery-item img{
+.gallery img{
   width:100%;
   aspect-ratio:1/1;
   object-fit:cover;
-  border-radius:10px;
+  border-radius:8px;
   cursor:pointer;
-  transition:.3s;
-}
-
-.gallery-item img:hover{
-  transform:scale(1.05);
 }
 
 /* ===== LIGHTBOX ===== */
@@ -104,7 +109,6 @@ nav{
 .lightbox img{
   max-width:90%;
   max-height:90%;
-  border-radius:10px;
 }
 
 .close{
@@ -116,12 +120,21 @@ nav{
   cursor:pointer;
 }
 
+.prev, .next{
+  position:absolute;
+  top:50%;
+  font-size:40px;
+  color:white;
+  cursor:pointer;
+}
+
+.prev{ left:20px; }
+.next{ right:20px; }
+
 /* ===== FOOTER ===== */
 footer{
   text-align:center;
-  padding:40px;
-  border-top:1px solid rgba(212,165,255,0.2);
-  font-size:13px;
+  padding:30px;
   opacity:.6;
 }
 
@@ -133,13 +146,11 @@ footer{
 
 <!-- NAV -->
 <nav>
-  <div class="logo">b.w fotos</div>
+  <div>b.w fotos</div>
   <div class="nav-links">
     <a href="index.html">Home</a>
     <a href="about.html">About</a>
     <a href="portraits.html">Portraits</a>
-    <a href="mini-sessions.html">Mini Sessions</a>
-    <a href="scenic.html">Scenic</a>
     <a href="bookings.html">Book</a>
   </div>
 </nav>
@@ -147,131 +158,161 @@ footer{
 <!-- HERO -->
 <section class="hero">
   <h1>Gallery</h1>
-  <p>CAPTURING MOMENTS ACROSS EVERY STORY</p>
 </section>
 
-<!-- EMBASSY -->
-<h2 class="section-title">Embassy Suites • Lexington, KY • 2021</h2>
-<section class="gallery">
-  <div class="gallery-item"><img src="images/IMG_1750.jpeg" onclick="openLightbox(0)"></div>
-  <div class="gallery-item"><img src="images/IMG_1751.jpeg" onclick="openLightbox(1)"></div>
-  <div class="gallery-item"><img src="images/IMG_1752.jpeg" onclick="openLightbox(2)"></div>
-  <div class="gallery-item"><img src="images/IMG_1753.jpeg" onclick="openLightbox(3)"></div>
+<!-- ALBUMS -->
+<section class="albums">
+
+  <div class="album" onclick="openAlbum('embassy')">
+    <img src="images/IMG_1750.jpeg">
+    <div class="album-title">Embassy Suites</div>
+  </div>
+
+  <div class="album" onclick="openAlbum('falls')">
+    <img src="images/IMG_1754.jpeg">
+    <div class="album-title">76 Falls</div>
+  </div>
+
+  <div class="album" onclick="openAlbum('rv')">
+    <img src="images/IMG_1764.jpeg">
+    <div class="album-title">Thompson RV</div>
+  </div>
+
+  <div class="album" onclick="openAlbum('school')">
+    <img src="images/IMG_1770.jpeg">
+    <div class="album-title">Old Flat Lick</div>
+  </div>
+
+  <div class="album" onclick="openAlbum('park')">
+    <img src="images/IMG_1784.jpeg">
+    <div class="album-title">Random Park</div>
+  </div>
+
+  <div class="album" onclick="openAlbum('rock')">
+    <img src="images/IMG_1797.jpeg">
+    <div class="album-title">Rockcastle</div>
+  </div>
+
+  <div class="album" onclick="openAlbum('extra')">
+    <img src="images/IMG_1804.jpeg">
+    <div class="album-title">Campfire & Wind Chime</div>
+  </div>
+
 </section>
 
-<!-- 76 FALLS -->
-<h2 class="section-title">76 Falls • Albany, KY • April 2020</h2>
-<section class="gallery">
-  <div class="gallery-item"><img src="images/IMG_1754.jpeg" onclick="openLightbox(4)"></div>
-  <div class="gallery-item"><img src="images/IMG_1755.jpeg" onclick="openLightbox(5)"></div>
-  <div class="gallery-item"><img src="images/IMG_1756.jpeg" onclick="openLightbox(6)"></div>
-  <div class="gallery-item"><img src="images/IMG_1757.jpeg" onclick="openLightbox(7)"></div>
-  <div class="gallery-item"><img src="images/IMG_1758.jpeg" onclick="openLightbox(8)"></div>
-  <div class="gallery-item"><img src="images/IMG_1759.jpeg" onclick="openLightbox(9)"></div>
-  <div class="gallery-item"><img src="images/IMG_1760.jpeg" onclick="openLightbox(10)"></div>
-  <div class="gallery-item"><img src="images/IMG_1761.jpeg" onclick="openLightbox(11)"></div>
-  <div class="gallery-item"><img src="images/IMG_1762.jpeg" onclick="openLightbox(12)"></div>
-  <div class="gallery-item"><img src="images/IMG_1763.jpeg" onclick="openLightbox(13)"></div>
-</section>
-
-<!-- THOMPSON RV -->
-<h2 class="section-title">Thompson RV & Park • Barbourville, KY • April 2020</h2>
-<section class="gallery">
-  <div class="gallery-item"><img src="images/IMG_1764.jpeg" onclick="openLightbox(14)"></div>
-  <div class="gallery-item"><img src="images/IMG_1765.jpeg" onclick="openLightbox(15)"></div>
-  <div class="gallery-item"><img src="images/IMG_1766.jpeg" onclick="openLightbox(16)"></div>
-  <div class="gallery-item"><img src="images/IMG_1767.jpeg" onclick="openLightbox(17)"></div>
-  <div class="gallery-item"><img src="images/IMG_1768.jpeg" onclick="openLightbox(18)"></div>
-  <div class="gallery-item"><img src="images/IMG_1769.jpeg" onclick="openLightbox(19)"></div>
-</section>
-
-<!-- OLD FLAT LICK -->
-<h2 class="section-title">Old Flat Lick Schoolhouse • October 2019</h2>
-<section class="gallery">
-  <div class="gallery-item"><img src="images/IMG_1770.jpeg" onclick="openLightbox(20)"></div>
-  <div class="gallery-item"><img src="images/IMG_1771.jpeg" onclick="openLightbox(21)"></div>
-  <div class="gallery-item"><img src="images/IMG_1772.jpeg" onclick="openLightbox(22)"></div>
-  <div class="gallery-item"><img src="images/IMG_1773.jpeg" onclick="openLightbox(23)"></div>
-  <div class="gallery-item"><img src="images/IMG_1774.jpeg" onclick="openLightbox(24)"></div>
-  <div class="gallery-item"><img src="images/IMG_1775.jpeg" onclick="openLightbox(25)"></div>
-  <div class="gallery-item"><img src="images/IMG_1776.jpeg" onclick="openLightbox(26)"></div>
-  <div class="gallery-item"><img src="images/IMG_1777.jpeg" onclick="openLightbox(27)"></div>
-  <div class="gallery-item"><img src="images/IMG_1778.jpeg" onclick="openLightbox(28)"></div>
-  <div class="gallery-item"><img src="images/IMG_1779.jpeg" onclick="openLightbox(29)"></div>
-  <div class="gallery-item"><img src="images/IMG_1780.jpeg" onclick="openLightbox(30)"></div>
-  <div class="gallery-item"><img src="images/IMG_1781.jpeg" onclick="openLightbox(31)"></div>
-  <div class="gallery-item"><img src="images/IMG_1782.jpeg" onclick="openLightbox(32)"></div>
-  <div class="gallery-item"><img src="images/IMG_1783.jpeg" onclick="openLightbox(33)"></div>
-</section>
-
-<!-- RANDOM PARK -->
-<h2 class="section-title">Random Park • September 2019</h2>
-<section class="gallery">
-  <div class="gallery-item"><img src="images/IMG_1784.jpeg" onclick="openLightbox(34)"></div>
-  <div class="gallery-item"><img src="images/IMG_1785.jpeg" onclick="openLightbox(35)"></div>
-  <div class="gallery-item"><img src="images/IMG_1786.jpeg" onclick="openLightbox(36)"></div>
-  <div class="gallery-item"><img src="images/IMG_1787.jpeg" onclick="openLightbox(37)"></div>
-  <div class="gallery-item"><img src="images/IMG_1788.jpeg" onclick="openLightbox(38)"></div>
-  <div class="gallery-item"><img src="images/IMG_1789.jpeg" onclick="openLightbox(39)"></div>
-  <div class="gallery-item"><img src="images/IMG_1790.jpeg" onclick="openLightbox(40)"></div>
-  <div class="gallery-item"><img src="images/IMG_1791.jpeg" onclick="openLightbox(41)"></div>
-  <div class="gallery-item"><img src="images/IMG_1792.jpeg" onclick="openLightbox(42)"></div>
-  <div class="gallery-item"><img src="images/IMG_1793.jpeg" onclick="openLightbox(43)"></div>
-  <div class="gallery-item"><img src="images/IMG_1794.jpeg" onclick="openLightbox(44)"></div>
-  <div class="gallery-item"><img src="images/IMG_1795.jpeg" onclick="openLightbox(45)"></div>
-  <div class="gallery-item"><img src="images/IMG_1796.jpeg" onclick="openLightbox(46)"></div>
-</section>
-
-<!-- ROCKCASTLE -->
-<h2 class="section-title">Rockcastle Gardens • July 2019</h2>
-<section class="gallery">
-  <div class="gallery-item"><img src="images/IMG_1797.jpeg" onclick="openLightbox(47)"></div>
-  <div class="gallery-item"><img src="images/IMG_1798.jpeg" onclick="openLightbox(48)"></div>
-  <div class="gallery-item"><img src="images/IMG_1799.jpeg" onclick="openLightbox(49)"></div>
-</section>
-
-<!-- FINAL -->
-<h2 class="section-title">Campfire & Wind Chime</h2>
-<section class="gallery">
-  <div class="gallery-item"><img src="images/IMG_1804.jpeg" onclick="openLightbox(50)"></div>
-  <div class="gallery-item"><img src="images/IMG_1805.jpeg" onclick="openLightbox(51)"></div>
-</section>
+<!-- THUMBNAILS -->
+<section class="gallery" id="albumView"></section>
 
 <!-- LIGHTBOX -->
-<div class="lightbox" id="lightbox" onclick="closeLightbox()">
-  <span class="close">&times;</span>
+<div class="lightbox" id="lightbox">
+  <span class="close" onclick="closeLightbox()">&times;</span>
+  <span class="prev" onclick="prevImage()">&#10094;</span>
   <img id="lightbox-img">
+  <span class="next" onclick="nextImage()">&#10095;</span>
 </div>
 
 <footer>
-  © 2026 b.w fotos | Capturing Moments. Preserving Stories.
+  © 2026 b.w fotos
 </footer>
 
 <script>
-const images = [
-"images/IMG_1750.jpeg","images/IMG_1751.jpeg","images/IMG_1752.jpeg","images/IMG_1753.jpeg",
-"images/IMG_1754.jpeg","images/IMG_1755.jpeg","images/IMG_1756.jpeg","images/IMG_1757.jpeg",
-"images/IMG_1758.jpeg","images/IMG_1759.jpeg","images/IMG_1760.jpeg","images/IMG_1761.jpeg",
-"images/IMG_1762.jpeg","images/IMG_1763.jpeg","images/IMG_1764.jpeg","images/IMG_1765.jpeg",
-"images/IMG_1766.jpeg","images/IMG_1767.jpeg","images/IMG_1768.jpeg","images/IMG_1769.jpeg",
-"images/IMG_1770.jpeg","images/IMG_1771.jpeg","images/IMG_1772.jpeg","images/IMG_1773.jpeg",
-"images/IMG_1774.jpeg","images/IMG_1775.jpeg","images/IMG_1776.jpeg","images/IMG_1777.jpeg",
-"images/IMG_1778.jpeg","images/IMG_1779.jpeg","images/IMG_1780.jpeg","images/IMG_1781.jpeg",
-"images/IMG_1782.jpeg","images/IMG_1783.jpeg","images/IMG_1784.jpeg","images/IMG_1785.jpeg",
-"images/IMG_1786.jpeg","images/IMG_1787.jpeg","images/IMG_1788.jpeg","images/IMG_1789.jpeg",
-"images/IMG_1790.jpeg","images/IMG_1791.jpeg","images/IMG_1792.jpeg","images/IMG_1793.jpeg",
-"images/IMG_1794.jpeg","images/IMG_1795.jpeg","images/IMG_1796.jpeg","images/IMG_1797.jpeg",
-"images/IMG_1798.jpeg","images/IMG_1799.jpeg","images/IMG_1804.jpeg","images/IMG_1805.jpeg"
-];
+
+const albums = {
+
+  embassy:[
+    "images/IMG_1750.jpeg","images/IMG_1751.jpeg","images/IMG_1752.jpeg","images/IMG_1753.jpeg"
+  ],
+
+  falls:[
+    "images/IMG_1754.jpeg","images/IMG_1755.jpeg","images/IMG_1756.jpeg","images/IMG_1757.jpeg",
+    "images/IMG_1758.jpeg","images/IMG_1759.jpeg","images/IMG_1760.jpeg","images/IMG_1761.jpeg",
+    "images/IMG_1762.jpeg","images/IMG_1763.jpeg"
+  ],
+
+  rv:[
+    "images/IMG_1764.jpeg","images/IMG_1765.jpeg","images/IMG_1766.jpeg",
+    "images/IMG_1767.jpeg","images/IMG_1768.jpeg","images/IMG_1769.jpeg"
+  ],
+
+  school:[
+    "images/IMG_1770.jpeg","images/IMG_1771.jpeg","images/IMG_1772.jpeg","images/IMG_1773.jpeg",
+    "images/IMG_1774.jpeg","images/IMG_1775.jpeg","images/IMG_1776.jpeg","images/IMG_1777.jpeg",
+    "images/IMG_1778.jpeg","images/IMG_1779.jpeg","images/IMG_1780.jpeg","images/IMG_1781.jpeg",
+    "images/IMG_1782.jpeg","images/IMG_1783.jpeg"
+  ],
+
+  park:[
+    "images/IMG_1784.jpeg","images/IMG_1785.jpeg","images/IMG_1786.jpeg","images/IMG_1787.jpeg",
+    "images/IMG_1788.jpeg","images/IMG_1789.jpeg","images/IMG_1790.jpeg","images/IMG_1791.jpeg",
+    "images/IMG_1792.jpeg","images/IMG_1793.jpeg","images/IMG_1794.jpeg","images/IMG_1795.jpeg",
+    "images/IMG_1796.jpeg"
+  ],
+
+  rock:[
+    "images/IMG_1797.jpeg","images/IMG_1798.jpeg","images/IMG_1799.jpeg"
+  ],
+
+  extra:[
+    "images/IMG_1804.jpeg","images/IMG_1805.jpeg"
+  ]
+
+};
+
+let currentAlbum = [];
+let currentIndex = 0;
+
+function openAlbum(name){
+  const container = document.getElementById("albumView");
+  container.innerHTML = "";
+  currentAlbum = albums[name];
+
+  currentAlbum.forEach((img,i)=>{
+    container.innerHTML += `<img src="${img}" onclick="openLightbox(${i})">`;
+  });
+
+  window.scrollTo({top:container.offsetTop, behavior:"smooth"});
+}
 
 function openLightbox(i){
-  document.getElementById("lightbox").style.display = "flex";
-  document.getElementById("lightbox-img").src = images[i];
+  currentIndex = i;
+  document.getElementById("lightbox").style.display="flex";
+  document.getElementById("lightbox-img").src=currentAlbum[i];
+}
+
+function nextImage(){
+  currentIndex = (currentIndex+1)%currentAlbum.length;
+  document.getElementById("lightbox-img").src=currentAlbum[currentIndex];
+}
+
+function prevImage(){
+  currentIndex = (currentIndex-1+currentAlbum.length)%currentAlbum.length;
+  document.getElementById("lightbox-img").src=currentAlbum[currentIndex];
 }
 
 function closeLightbox(){
-  document.getElementById("lightbox").style.display = "none";
+  document.getElementById("lightbox").style.display="none";
 }
+
+/* keyboard */
+document.addEventListener("keydown", e=>{
+  if(e.key==="ArrowRight") nextImage();
+  if(e.key==="ArrowLeft") prevImage();
+  if(e.key==="Escape") closeLightbox();
+});
+
+/* swipe */
+let startX=0;
+
+document.getElementById("lightbox").addEventListener("touchstart",e=>{
+  startX=e.touches[0].clientX;
+});
+
+document.getElementById("lightbox").addEventListener("touchend",e=>{
+  let endX=e.changedTouches[0].clientX;
+  if(endX-startX>50) prevImage();
+  if(startX-endX>50) nextImage();
+});
+
 </script>
 
 </body>
