@@ -150,14 +150,18 @@ footer{
   <h2>Request Your Session</h2>
 
   <p>
-    Fill out the form below to request your session.  
-    You will receive confirmation once your date is approved.
+    Fill out the form below to request your session.
+  </p>
+
+  <p>
+    Your request will be reviewed and confirmed based on availability.
   </p>
 
   <form 
     action="https://docs.google.com/forms/d/e/1FAIpQLScJiZu-JQJEJx7YpF1LQE3MdShybpF902qouPUPXXDXB21ewA/formResponse" 
-    method="POST" 
-    target="_blank">
+    method="POST"
+    target="hidden_iframe"
+    onsubmit="submitted=true; setTimeout(function(){ window.location.href='thanks.html'; }, 500);">
 
     <input 
       type="text" 
@@ -202,6 +206,9 @@ footer{
   </form>
 
 </section>
+
+<!-- Hidden iframe for silent submit -->
+<iframe name="hidden_iframe" style="display:none;"></iframe>
 
 <!-- ===== FOOTER ===== -->
 <footer>
