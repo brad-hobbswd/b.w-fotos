@@ -41,7 +41,6 @@ nav{
 
 .logo{
   font-size:20px;
-  letter-spacing:2px;
 }
 
 .nav-links a{
@@ -50,49 +49,37 @@ nav{
   opacity:.8;
 }
 
-.nav-links a:hover{
-  opacity:1;
-}
-
-/* ===== HERO (tightened) ===== */
+/* ===== HERO ===== */
 .hero{
   text-align:center;
   padding:60px 20px 20px;
 }
 
-.hero h1{
-  font-size:42px;
-}
-
 .hero p{
   color:#d4a5ff;
-  letter-spacing:2px;
 }
 
-/* ===== FILTER ===== */
-.filters{
+/* ===== SECTION TITLE ===== */
+.section-title{
   text-align:center;
-  margin-bottom:20px;
+  margin:30px 0 10px;
+  color:#d4a5ff;
 }
 
 /* ===== GALLERY ===== */
 .gallery{
   display:grid;
-  grid-template-columns:repeat(auto-fit, minmax(220px,1fr));
-  gap:15px;
+  grid-template-columns:repeat(auto-fit, minmax(180px,1fr));
+  gap:12px;
   padding:20px;
-}
-
-.gallery-item{
-  overflow:hidden;
-  border-radius:10px;
-  cursor:pointer;
 }
 
 .gallery-item img{
   width:100%;
-  height:240px;
+  aspect-ratio:1/1;
   object-fit:cover;
+  border-radius:10px;
+  cursor:pointer;
   transition:.3s;
 }
 
@@ -117,20 +104,17 @@ nav{
 .lightbox img{
   max-width:90%;
   max-height:90%;
+  border-radius:10px;
 }
 
-.arrow{
+.close{
   position:absolute;
-  top:50%;
-  transform:translateY(-50%);
+  top:20px;
+  right:30px;
   font-size:40px;
   color:white;
   cursor:pointer;
-  padding:20px;
 }
-
-.arrow.left{ left:20px; }
-.arrow.right{ right:20px; }
 
 /* ===== FOOTER ===== */
 footer{
@@ -147,6 +131,7 @@ footer{
 
 <body>
 
+<!-- NAV -->
 <nav>
   <div class="logo">b.w fotos</div>
   <div class="nav-links">
@@ -159,23 +144,13 @@ footer{
   </div>
 </nav>
 
+<!-- HERO -->
 <section class="hero">
   <h1>Gallery</h1>
   <p>CAPTURING MOMENTS ACROSS EVERY STORY</p>
 </section>
 
-<div class="filters">
-  <button>All</button>
-  <button>Portraits</button>
-  <button>Mini Sessions</button>
-  <button>Scenic</button>
-</div>
-
-<section class="gallery">
-
-  <!-- Just duplicate these blocks for your 52 images -->
-
- <!-- ===== EMBASSY SUITES ===== -->
+<!-- EMBASSY -->
 <h2 class="section-title">Embassy Suites • Lexington, KY • 2021</h2>
 <section class="gallery">
   <div class="gallery-item"><img src="images/IMG_1750.jpeg" onclick="openLightbox(0)"></div>
@@ -184,7 +159,7 @@ footer{
   <div class="gallery-item"><img src="images/IMG_1753.jpeg" onclick="openLightbox(3)"></div>
 </section>
 
-<!-- ===== 76 FALLS ===== -->
+<!-- 76 FALLS -->
 <h2 class="section-title">76 Falls • Albany, KY • April 2020</h2>
 <section class="gallery">
   <div class="gallery-item"><img src="images/IMG_1754.jpeg" onclick="openLightbox(4)"></div>
@@ -199,7 +174,7 @@ footer{
   <div class="gallery-item"><img src="images/IMG_1763.jpeg" onclick="openLightbox(13)"></div>
 </section>
 
-<!-- ===== THOMPSON RV ===== -->
+<!-- THOMPSON RV -->
 <h2 class="section-title">Thompson RV & Park • Barbourville, KY • April 2020</h2>
 <section class="gallery">
   <div class="gallery-item"><img src="images/IMG_1764.jpeg" onclick="openLightbox(14)"></div>
@@ -210,7 +185,7 @@ footer{
   <div class="gallery-item"><img src="images/IMG_1769.jpeg" onclick="openLightbox(19)"></div>
 </section>
 
-<!-- ===== OLD FLAT LICK ===== -->
+<!-- OLD FLAT LICK -->
 <h2 class="section-title">Old Flat Lick Schoolhouse • October 2019</h2>
 <section class="gallery">
   <div class="gallery-item"><img src="images/IMG_1770.jpeg" onclick="openLightbox(20)"></div>
@@ -229,7 +204,7 @@ footer{
   <div class="gallery-item"><img src="images/IMG_1783.jpeg" onclick="openLightbox(33)"></div>
 </section>
 
-<!-- ===== RANDOM PARK ===== -->
+<!-- RANDOM PARK -->
 <h2 class="section-title">Random Park • September 2019</h2>
 <section class="gallery">
   <div class="gallery-item"><img src="images/IMG_1784.jpeg" onclick="openLightbox(34)"></div>
@@ -247,7 +222,7 @@ footer{
   <div class="gallery-item"><img src="images/IMG_1796.jpeg" onclick="openLightbox(46)"></div>
 </section>
 
-<!-- ===== ROCKCASTLE ===== -->
+<!-- ROCKCASTLE -->
 <h2 class="section-title">Rockcastle Gardens • July 2019</h2>
 <section class="gallery">
   <div class="gallery-item"><img src="images/IMG_1797.jpeg" onclick="openLightbox(47)"></div>
@@ -255,20 +230,17 @@ footer{
   <div class="gallery-item"><img src="images/IMG_1799.jpeg" onclick="openLightbox(49)"></div>
 </section>
 
-<!-- ===== BONUS ===== -->
+<!-- FINAL -->
 <h2 class="section-title">Campfire & Wind Chime</h2>
 <section class="gallery">
   <div class="gallery-item"><img src="images/IMG_1804.jpeg" onclick="openLightbox(50)"></div>
   <div class="gallery-item"><img src="images/IMG_1805.jpeg" onclick="openLightbox(51)"></div>
 </section>
 
-</section>
-
 <!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox" onclick="closeLightbox()">
-  <span class="arrow left" onclick="prev(event)">❮</span>
+  <span class="close">&times;</span>
   <img id="lightbox-img">
-  <span class="arrow right" onclick="next(event)">❯</span>
 </div>
 
 <footer>
@@ -276,87 +248,30 @@ footer{
 </footer>
 
 <script>
-
-/* ADD ALL 52 IMAGES HERE */
 const images = [
-  "images/IMG_1750.jpeg",
-  "images/IMG_1751.jpeg",
-  "images/IMG_1752.jpeg",
-  "images/IMG_1753.jpeg",
-  "images/IMG_1754.jpeg",
-  "images/IMG_1755.jpeg",
-  "images/IMG_1756.jpeg",
-  "images/IMG_1757.jpeg",
-  "images/IMG_1758.jpeg",
-  "images/IMG_1759.jpeg",
-  "images/IMG_1760.jpeg",
-  "images/IMG_1761.jpeg",
-  "images/IMG_1762.jpeg",
-  "images/IMG_1763.jpeg",
-  "images/IMG_1764.jpeg",
-  "images/IMG_1765.jpeg",
-  "images/IMG_1766.jpeg",
-  "images/IMG_1767.jpeg",
-  "images/IMG_1768.jpeg",
-  "images/IMG_1769.jpeg",
-  "images/IMG_1770.jpeg",
-  "images/IMG_1771.jpeg",
-  "images/IMG_1772.jpeg",
-  "images/IMG_1773.jpeg",
-  "images/IMG_1774.jpeg",
-  "images/IMG_1775.jpeg",
-  "images/IMG_1776.jpeg",
-  "images/IMG_1777.jpeg",
-  "images/IMG_1778.jpeg",
-  "images/IMG_1779.jpeg",
-  "images/IMG_1780.jpeg",
-  "images/IMG_1781.jpeg",
-  "images/IMG_1782.jpeg",
-  "images/IMG_1783.jpeg",
-  "images/IMG_1784.jpeg",
-  "images/IMG_1785.jpeg",
-  "images/IMG_1786.jpeg",
-  "images/IMG_1787.jpeg",
-  "images/IMG_1788.jpeg",
-  "images/IMG_1789.jpeg",
-  "images/IMG_1790.jpeg",
-  "images/IMG_1791.jpeg",
-  "images/IMG_1792.jpeg",
-  "images/IMG_1793.jpeg",
-  "images/IMG_1794.jpeg",
-  "images/IMG_1795.jpeg",
-  "images/IMG_1796.jpeg",
-  "images/IMG_1797.jpeg",
-  "images/IMG_1798.jpeg",
-  "images/IMG_1799.jpeg",
-  "images/IMG_1804.jpeg",
-  "images/IMG_1805.jpeg"
+"images/IMG_1750.jpeg","images/IMG_1751.jpeg","images/IMG_1752.jpeg","images/IMG_1753.jpeg",
+"images/IMG_1754.jpeg","images/IMG_1755.jpeg","images/IMG_1756.jpeg","images/IMG_1757.jpeg",
+"images/IMG_1758.jpeg","images/IMG_1759.jpeg","images/IMG_1760.jpeg","images/IMG_1761.jpeg",
+"images/IMG_1762.jpeg","images/IMG_1763.jpeg","images/IMG_1764.jpeg","images/IMG_1765.jpeg",
+"images/IMG_1766.jpeg","images/IMG_1767.jpeg","images/IMG_1768.jpeg","images/IMG_1769.jpeg",
+"images/IMG_1770.jpeg","images/IMG_1771.jpeg","images/IMG_1772.jpeg","images/IMG_1773.jpeg",
+"images/IMG_1774.jpeg","images/IMG_1775.jpeg","images/IMG_1776.jpeg","images/IMG_1777.jpeg",
+"images/IMG_1778.jpeg","images/IMG_1779.jpeg","images/IMG_1780.jpeg","images/IMG_1781.jpeg",
+"images/IMG_1782.jpeg","images/IMG_1783.jpeg","images/IMG_1784.jpeg","images/IMG_1785.jpeg",
+"images/IMG_1786.jpeg","images/IMG_1787.jpeg","images/IMG_1788.jpeg","images/IMG_1789.jpeg",
+"images/IMG_1790.jpeg","images/IMG_1791.jpeg","images/IMG_1792.jpeg","images/IMG_1793.jpeg",
+"images/IMG_1794.jpeg","images/IMG_1795.jpeg","images/IMG_1796.jpeg","images/IMG_1797.jpeg",
+"images/IMG_1798.jpeg","images/IMG_1799.jpeg","images/IMG_1804.jpeg","images/IMG_1805.jpeg"
 ];
 
-let index = 0;
-
 function openLightbox(i){
-  index = i;
   document.getElementById("lightbox").style.display = "flex";
-  document.getElementById("lightbox-img").src = images[index];
+  document.getElementById("lightbox-img").src = images[i];
 }
 
 function closeLightbox(){
   document.getElementById("lightbox").style.display = "none";
 }
-
-function next(e){
-  e.stopPropagation();
-  index = (index + 1) % images.length;
-  document.getElementById("lightbox-img").src = images[index];
-}
-
-function prev(e){
-  e.stopPropagation();
-  index = (index - 1 + images.length) % images.length;
-  document.getElementById("lightbox-img").src = images[index];
-}
-
 </script>
 
 </body>
