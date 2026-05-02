@@ -30,7 +30,7 @@ a{
   color:#d4a5ff;
 }
 
-/* ===== NAV ===== */
+/* ===== NAV (for header include styling) ===== */
 nav{
   display:flex;
   justify-content:space-between;
@@ -54,7 +54,7 @@ nav{
   opacity:1;
 }
 
-/* ===== HERO (UPDATED) ===== */
+/* ===== HERO ===== */
 .hero{
   padding:60px 20px 30px;
   text-align:center;
@@ -71,7 +71,7 @@ nav{
   font-size:14px;
 }
 
-/* ===== INTRO (UPDATED) ===== */
+/* ===== INTRO ===== */
 .intro{
   max-width:800px;
   margin:auto;
@@ -84,7 +84,7 @@ nav{
   opacity:.9;
 }
 
-/* ===== ALBUMS (UPDATED) ===== */
+/* ===== ALBUMS ===== */
 .albums{
   display:grid;
   grid-template-columns:repeat(auto-fit, minmax(240px, 320px));
@@ -161,7 +161,7 @@ nav{
 .arrow.left{ left:20px; }
 .arrow.right{ right:20px; }
 
-/* ===== CTA (UPDATED) ===== */
+/* ===== CTA ===== */
 .cta{
   text-align:center;
   padding:50px 20px;
@@ -180,13 +180,31 @@ nav{
   color:#1a1714;
 }
 
-/* ===== FOOTER ===== */
-footer{
-  text-align:center;
+/* ===== FOOTER SYSTEM ===== */
+.site-footer{
+  margin-top:80px;
   padding:40px 20px;
-  border-top:1px solid rgba(212,165,255,0.2);
+  text-align:center;
   font-size:13px;
-  opacity:.6;
+  color:#e6dccf;
+  opacity:.7;
+}
+
+.footer-line{
+  width:60%;
+  height:1px;
+  background:rgba(212,165,255,0.2);
+  margin:0 auto 25px;
+}
+
+.footer-content{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+.site-footer a{
+  color:#d4a5ff;
 }
 
 </style>
@@ -195,15 +213,8 @@ footer{
 
 <body>
 
-<nav>
-  <div class="logo">b.w fotos</div>
-  <div class="nav-links">
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="gallery.html">Gallery</a>
-    <a href="bookings.html">Contact</a>
-  </div>
-</nav>
+<!-- ===== HEADER INCLUDE ===== -->
+<div id="header"></div>
 
 <section class="hero">
   <h1>Nature Portraits</h1>
@@ -242,9 +253,8 @@ footer{
   <a href="bookings.html">Contact Me</a>
 </section>
 
-<footer>
-  © 2026 b.w fotos | Capturing Moments. Preserving Stories.
-</footer>
+<!-- ===== FOOTER INCLUDE ===== -->
+<div id="footer"></div>
 
 <script>
 
@@ -289,6 +299,22 @@ function prev(e){
   document.getElementById("lightbox-img").src = currentAlbum[index];
 }
 
+</script>
+
+<!-- LOAD HEADER + FOOTER -->
+<script>
+Promise.all([
+  fetch("header.html").then(res => res.text()),
+  fetch("footer.html").then(res => res.text())
+]).then(([headerData, footerData]) => {
+  document.getElementById("header").innerHTML = headerData;
+  document.getElementById("footer").innerHTML = footerData;
+
+  const yearEl = document.getElementById("year");
+  if(yearEl){
+    yearEl.textContent = new Date().getFullYear();
+  }
+});
 </script>
 
 </body>
