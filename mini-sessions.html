@@ -29,7 +29,7 @@ a{
   color:#d4a5ff;
 }
 
-/* ===== NAV ===== */
+/* ===== NAV (for header include styling) ===== */
 nav{
   display:flex;
   justify-content:space-between;
@@ -118,7 +118,7 @@ nav{
   border:1px solid rgba(212,165,255,0.15);
 }
 
-/* ===== GALLERY (FIXED) ===== */
+/* ===== GALLERY ===== */
 .gallery{
   max-width:1000px;
   margin:0 auto 60px;
@@ -160,13 +160,31 @@ nav{
   color:#1a1714;
 }
 
-/* ===== FOOTER ===== */
-footer{
-  text-align:center;
+/* ===== FOOTER SYSTEM ===== */
+.site-footer{
+  margin-top:80px;
   padding:40px 20px;
-  border-top:1px solid rgba(212,165,255,0.2);
+  text-align:center;
   font-size:13px;
-  opacity:.6;
+  color:#e6dccf;
+  opacity:.7;
+}
+
+.footer-line{
+  width:60%;
+  height:1px;
+  background:rgba(212,165,255,0.2);
+  margin:0 auto 25px;
+}
+
+.footer-content{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+.site-footer a{
+  color:#d4a5ff;
 }
 
 </style>
@@ -175,15 +193,8 @@ footer{
 
 <body>
 
-<nav>
-  <div class="logo">b.w fotos</div>
-  <div class="nav-links">
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="gallery.html">Gallery</a>
-    <a href="bookings.html">Contact</a>
-  </div>
-</nav>
+<!-- ===== HEADER INCLUDE ===== -->
+<div id="header"></div>
 
 <section class="hero">
   <h1>Mini Sessions</h1>
@@ -233,9 +244,24 @@ footer{
   <a href="bookings.html">Contact Me</a>
 </section>
 
-<footer>
-  © 2026 b.w fotos | Capturing Moments. Preserving Stories.
-</footer>
+<!-- ===== FOOTER INCLUDE ===== -->
+<div id="footer"></div>
+
+<!-- ===== LOAD HEADER + FOOTER ===== -->
+<script>
+Promise.all([
+  fetch("header.html").then(res => res.text()),
+  fetch("footer.html").then(res => res.text())
+]).then(([headerData, footerData]) => {
+  document.getElementById("header").innerHTML = headerData;
+  document.getElementById("footer").innerHTML = footerData;
+
+  const yearEl = document.getElementById("year");
+  if(yearEl){
+    yearEl.textContent = new Date().getFullYear();
+  }
+});
+</script>
 
 </body>
 </html>
