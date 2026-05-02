@@ -75,7 +75,7 @@ nav{
   max-width:800px;
   margin:auto;
   text-align:center;
-  padding:0 20px 60px;
+  padding:0 20px 40px;
 }
 
 .intro p{
@@ -83,41 +83,25 @@ nav{
   opacity:.9;
 }
 
-/* ===== GALLERY ===== */
-.gallery{
-  column-count:3;
-  column-gap:15px;
-  padding:20px;
+/* ===== BANNER ===== */
+.scenic-banner{
+  max-width:1000px;
+  margin:0 auto 50px; /* refined spacing */
+  padding:0 20px;
 }
 
-.gallery img{
+.scenic-banner img{
   width:100%;
-  margin-bottom:15px;
-  border-radius:8px;
-  transition:.3s;
-}
-
-.gallery img:hover{
-  transform:scale(1.02);
-}
-
-/* ===== MOBILE ===== */
-@media(max-width:900px){
-  .gallery{
-    column-count:2;
-  }
-}
-
-@media(max-width:600px){
-  .gallery{
-    column-count:1;
-  }
+  height:auto;
+  display:block;
+  border-radius:10px;
+  border:1px solid rgba(212,165,255,0.15);
 }
 
 /* ===== CTA ===== */
 .cta{
   text-align:center;
-  padding:80px 20px;
+  padding:60px 20px;
 }
 
 .cta a{
@@ -177,17 +161,9 @@ footer{
   </p>
 </section>
 
-<!-- ===== GALLERY ===== -->
-<section class="gallery">
-
-  <!-- Replace with your actual images -->
-  <img src="scenic1.jpg" alt="">
-  <img src="scenic2.jpg" alt="">
-  <img src="scenic3.jpg" alt="">
-  <img src="scenic4.jpg" alt="">
-  <img src="scenic5.jpg" alt="">
-  <img src="scenic6.jpg" alt="">
-
+<!-- ===== BANNER ===== -->
+<section class="scenic-banner">
+  <img src="images/EFDF8303-02C2-4B87-9185-630312C64A48.png" alt="">
 </section>
 
 <!-- ===== CTA ===== -->
