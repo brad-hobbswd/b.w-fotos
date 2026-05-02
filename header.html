@@ -11,9 +11,9 @@
 
     <!-- DROPDOWN -->
     <div class="dropdown">
-      <a href="gallery.html">Gallery ▾</a>
+      <a href="gallery.html" onclick="toggleDropdown(event)">Gallery ▾</a>
 
-      <div class="dropdown-content">
+      <div class="dropdown-content" id="dropdownMenu">
         <a href="portraits.html">Portraits</a>
         <a href="mini-sessions.html">Mini Sessions</a>
         <a href="scenic.html">Scenic</a>
@@ -27,16 +27,18 @@
 
 <style>
 
-/* ===== HEADER ===== */
+/* ===== HEADER (FIXED + CLEAN) ===== */
 .site-header{
-  position:sticky;
+  position:fixed;
   top:0;
+  left:0;
+  width:100%;
   z-index:9999;
   background:#1a1714;
   display:flex;
   justify-content:space-between;
   align-items:center;
-  padding:20px 40px;
+  padding:18px 40px;
   border-bottom:1px solid rgba(212,165,255,0.2);
 }
 
@@ -51,6 +53,12 @@
   font-size:14px;
   opacity:.8;
   color:#e6dccf;
+  transition:.2s;
+}
+
+.nav-links a:hover{
+  opacity:1;
+  color:#d4a5ff;
 }
 
 /* ===== DROPDOWN ===== */
@@ -75,8 +83,11 @@
   margin:0;
 }
 
-.dropdown:hover .dropdown-content{
-  display:block;
+/* desktop hover */
+@media(min-width:769px){
+  .dropdown:hover .dropdown-content{
+    display:block;
+  }
 }
 
 /* ===== HAMBURGER ===== */
@@ -118,6 +129,11 @@
     position:static;
     border:none;
     background:none;
+    display:none;
+  }
+
+  .dropdown-content.active{
+    display:block;
   }
 
   .dropdown-content a{
@@ -131,6 +147,9 @@
 
 <script>
 
+/* ===== FIX BODY OFFSET FOR FIXED HEADER ===== */
+document.body.style.paddingTop = "80px";
+
 /* ===== ACTIVE LINK ===== */
 const links = document.querySelectorAll('.nav-links a');
 const current = window.location.pathname.split("/").pop();
@@ -142,9 +161,27 @@ links.forEach(link => {
   }
 });
 
-/* ===== MOBILE TOGGLE ===== */
+/* ===== MOBILE MENU ===== */
 function toggleMenu(){
   document.getElementById("navLinks").classList.toggle("active");
 }
+
+/* ===== MOBILE DROPDOWN CLICK ===== */
+function toggleDropdown(e){
+  if(window.innerWidth <= 768){
+    e.preventDefault();
+    document.getElementById("dropdownMenu").classList.toggle("active");
+  }
+}
+
+/* ===== CLOSE MENU WHEN CLICK OUTSIDE ===== */
+document.addEventListener("click", function(e){
+  const nav = document.getElementById("navLinks");
+  const toggle = document.querySelector(".menu-toggle");
+
+  if(!nav.contains(e.target) && !toggle.contains(e.target)){
+    nav.classList.remove("active");
+  }
+});
 
 </script>
