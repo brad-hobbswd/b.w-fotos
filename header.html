@@ -27,19 +27,30 @@
 
 <style>
 
-/* ===== HEADER (FIXED + CLEAN) ===== */
+/* ===== HEADER (FIXED + SAFE AREA FIX) ===== */
 .site-header{
   position:fixed;
   top:0;
   left:0;
   width:100%;
   z-index:9999;
+
   background:#1a1714;
   display:flex;
   justify-content:space-between;
   align-items:center;
-  padding:18px 40px;
+
+  padding:16px 40px;
+  padding-top:calc(16px + env(safe-area-inset-top));
+
   border-bottom:1px solid rgba(212,165,255,0.2);
+}
+
+/* ===== LOGO ===== */
+.logo{
+  font-size:20px;
+  letter-spacing:2px;
+  color:#e6dccf;
 }
 
 /* ===== NAV LINKS ===== */
@@ -95,6 +106,7 @@
   display:none;
   font-size:24px;
   cursor:pointer;
+  color:#e6dccf;
 }
 
 /* ===== MOBILE ===== */
@@ -106,7 +118,7 @@
 
   .nav-links{
     position:absolute;
-    top:70px;
+    top:80px;
     right:0;
     width:220px;
     background:#1a1714;
@@ -147,8 +159,10 @@
 
 <script>
 
-/* ===== FIX BODY OFFSET FOR FIXED HEADER ===== */
-document.body.style.paddingTop = "80px";
+/* ===== FIX PAGE OFFSET (CRITICAL FIX) ===== */
+document.addEventListener("DOMContentLoaded", function(){
+  document.body.style.paddingTop = "100px";
+});
 
 /* ===== ACTIVE LINK ===== */
 const links = document.querySelectorAll('.nav-links a');
@@ -166,7 +180,7 @@ function toggleMenu(){
   document.getElementById("navLinks").classList.toggle("active");
 }
 
-/* ===== MOBILE DROPDOWN CLICK ===== */
+/* ===== MOBILE DROPDOWN ===== */
 function toggleDropdown(e){
   if(window.innerWidth <= 768){
     e.preventDefault();
