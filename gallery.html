@@ -14,6 +14,7 @@
 /* ===== GLOBAL ===== */
 body{
   margin:0;
+  padding-top:100px;
   font-family:'Inter', sans-serif;
   background:#1a1714;
   color:#e6dccf;
@@ -26,31 +27,6 @@ h1,h2{
 
 a{
   text-decoration:none;
-  color:#d4a5ff;
-}
-
-/* ===== NAV (for header include styling) ===== */
-nav{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:20px 40px;
-  border-bottom:1px solid rgba(212,165,255,0.2);
-}
-
-.logo{
-  font-size:20px;
-  letter-spacing:2px;
-}
-
-.nav-links a{
-  margin-left:25px;
-  font-size:14px;
-  opacity:.8;
-}
-
-.nav-links a:hover{
-  opacity:1;
   color:#d4a5ff;
 }
 
@@ -207,26 +183,18 @@ nav{
 
 <body>
 
-<!-- ===== HEADER INCLUDE ===== -->
 <div id="header"></div>
 
-<!-- HERO -->
 <section class="hero">
   <h1>Gallery</h1>
   <p>CAPTURING MOMENTS ACROSS EVERY STORY</p>
 </section>
 
-<!-- INTRO -->
 <section class="intro">
-  <p>
-    Every image carries a moment, a place, a story worth remembering.
-  </p>
-  <p>
-    Explore the albums below and step into the scenes as they were captured.
-  </p>
+  <p>Every image carries a moment, a place, a story worth remembering.</p>
+  <p>Explore the albums below and step into the scenes as they were captured.</p>
 </section>
 
-<!-- ALBUMS -->
 <section class="albums">
 
   <div class="album" onclick="openAlbum('embassy')">
@@ -266,10 +234,8 @@ nav{
 
 </section>
 
-<!-- THUMBNAILS -->
 <section class="gallery" id="albumView"></section>
 
-<!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox">
   <span class="close" onclick="closeLightbox()">&times;</span>
   <span class="prev" onclick="prevImage()">&#10094;</span>
@@ -277,11 +243,11 @@ nav{
   <span class="next" onclick="nextImage()">&#10095;</span>
 </div>
 
-<!-- ===== FOOTER INCLUDE ===== -->
 <div id="footer"></div>
 
 <script>
 
+/* ===== GALLERY LOGIC (UNCHANGED) ===== */
 const albums = {
   embassy:["images/IMG_1750.jpeg","images/IMG_1751.jpeg","images/IMG_1752.jpeg","images/IMG_1753.jpeg"],
   falls:["images/IMG_1754.jpeg","images/IMG_1755.jpeg","images/IMG_1756.jpeg","images/IMG_1757.jpeg","images/IMG_1758.jpeg","images/IMG_1759.jpeg","images/IMG_1760.jpeg","images/IMG_1761.jpeg","images/IMG_1762.jpeg","images/IMG_1763.jpeg"],
@@ -328,34 +294,53 @@ function closeLightbox(){
   document.getElementById("lightbox").style.display="none";
 }
 
-document.addEventListener("click", function(e){
-  const albumView = document.getElementById("albumView");
-  const albumsSection = document.querySelector(".albums");
-
-  if(
-    albumView.style.display === "grid" &&
-    !albumView.contains(e.target) &&
-    !albumsSection.contains(e.target)
-  ){
-    albumView.style.display = "none";
-  }
-});
-
-</script>
-
-<!-- LOAD HEADER + FOOTER -->
-<script>
+/* ===== HEADER + NAV SYSTEM ===== */
 Promise.all([
   fetch("header.html").then(res => res.text()),
   fetch("footer.html").then(res => res.text())
 ]).then(([headerData, footerData]) => {
+
   document.getElementById("header").innerHTML = headerData;
   document.getElementById("footer").innerHTML = footerData;
 
-  const yearEl = document.getElementById("year");
-  if(yearEl){
-    yearEl.textContent = new Date().getFullYear();
+  const year = document.getElementById("year");
+  if(year) year.textContent = new Date().getFullYear();
+
+  const menu = document.getElementById("menuToggle");
+  const nav = document.getElementById("navLinks");
+  const gallery = document.getElementById("galleryToggle");
+  const dropdown = document.getElementById("dropdownMenu");
+
+  let galleryOpened = false;
+
+  if(menu){
+    menu.onclick = () => nav.classList.toggle("active");
   }
+
+  if(gallery){
+    gallery.onclick = (e) => {
+      if(window.innerWidth <= 1024){
+        if(!galleryOpened){
+          e.preventDefault();
+          dropdown.classList.add("active");
+          galleryOpened = true;
+        } else {
+          galleryOpened = false;
+        }
+      }
+    };
+  }
+
+  document.addEventListener("click", function(e){
+    if(nav && menu){
+      if(!nav.contains(e.target) && !menu.contains(e.target)){
+        nav.classList.remove("active");
+        dropdown.classList.remove("active");
+        galleryOpened = false;
+      }
+    }
+  });
+
 });
 </script>
 
