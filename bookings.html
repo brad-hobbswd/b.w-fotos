@@ -14,6 +14,7 @@
 /* ===== GLOBAL ===== */
 body{
   margin:0;
+  padding-top:100px;
   font-family:'Inter', sans-serif;
   background:#1a1714;
   color:#e6dccf;
@@ -27,30 +28,6 @@ h1,h2,h3{
 a{
   text-decoration:none;
   color:#d4a5ff;
-}
-
-/* ===== NAV (for header include styling) ===== */
-nav{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:20px 40px;
-  border-bottom:1px solid rgba(212,165,255,0.2);
-}
-
-.logo{
-  font-size:20px;
-  letter-spacing:2px;
-}
-
-.nav-links a{
-  margin-left:25px;
-  font-size:14px;
-  opacity:.8;
-}
-
-.nav-links a:hover{
-  opacity:1;
 }
 
 /* ===== HERO ===== */
@@ -111,7 +88,7 @@ button:hover{
   opacity:.9;
 }
 
-/* ===== FOOTER SYSTEM (for include styling) ===== */
+/* ===== FOOTER SYSTEM ===== */
 .site-footer{
   margin-top:80px;
   padding:40px 20px;
@@ -144,16 +121,13 @@ button:hover{
 
 <body>
 
-<!-- ===== HEADER INCLUDE ===== -->
 <div id="header"></div>
 
-<!-- ===== HERO ===== -->
 <section class="hero">
   <h1>Book a Session</h1>
   <p>SIMPLE. CLEAR. CONNECTED.</p>
 </section>
 
-<!-- ===== BOOKING FORM ===== -->
 <section class="booking-card">
 
   <h2>Request Your Session</h2>
@@ -216,18 +190,16 @@ button:hover{
 
 </section>
 
-<!-- Hidden iframe for silent submit -->
 <iframe name="hidden_iframe" style="display:none;"></iframe>
 
-<!-- ===== FOOTER INCLUDE ===== -->
 <div id="footer"></div>
 
-<!-- ===== LOAD HEADER + FOOTER ===== -->
 <script>
 Promise.all([
   fetch("header.html").then(res => res.text()),
   fetch("footer.html").then(res => res.text())
 ]).then(([headerData, footerData]) => {
+
   document.getElementById("header").innerHTML = headerData;
   document.getElementById("footer").innerHTML = footerData;
 
@@ -235,6 +207,42 @@ Promise.all([
   if(yearEl){
     yearEl.textContent = new Date().getFullYear();
   }
+
+  const menu = document.getElementById("menuToggle");
+  const nav = document.getElementById("navLinks");
+  const gallery = document.getElementById("galleryToggle");
+  const dropdown = document.getElementById("dropdownMenu");
+
+  let galleryOpened = false;
+
+  if(menu){
+    menu.onclick = () => nav.classList.toggle("active");
+  }
+
+  if(gallery){
+    gallery.onclick = (e) => {
+      if(window.innerWidth <= 1024){
+        if(!galleryOpened){
+          e.preventDefault();
+          dropdown.classList.add("active");
+          galleryOpened = true;
+        } else {
+          galleryOpened = false;
+        }
+      }
+    };
+  }
+
+  document.addEventListener("click", function(e){
+    if(nav && menu){
+      if(!nav.contains(e.target) && !menu.contains(e.target)){
+        nav.classList.remove("active");
+        dropdown.classList.remove("active");
+        galleryOpened = false;
+      }
+    }
+  });
+
 });
 </script>
 
