@@ -33,7 +33,7 @@ html, body{
   overflow-x:hidden;
 }
 
-/* ===== HEADER (REAL FIX) ===== */
+/* ===== HEADER ===== */
 .site-header{
   position:fixed;
   top:0;
@@ -50,10 +50,6 @@ html, body{
   padding:16px 30px;
 
   border-bottom:1px solid rgba(212,165,255,0.2);
-
-  /* 🔥 SAFARI FIX */
-  transform:translateZ(0);
-  -webkit-transform:translateZ(0);
 }
 
 /* ===== LOGO ===== */
@@ -127,16 +123,17 @@ html, body{
   }
 
   .nav-links{
-    position:absolute;
+    position:fixed;
     top:70px;
-    right:0;
+    right:-250px;
     width:220px;
+    height:100%;
     background:#1a1714;
     flex-direction:column;
     align-items:flex-start;
     padding:20px;
     border-left:1px solid rgba(212,165,255,0.2);
-    display:none;
+    transition:.3s;
   }
 
   .nav-links a{
@@ -144,7 +141,7 @@ html, body{
   }
 
   .nav-links.active{
-    display:flex;
+    right:0;
   }
 
   .dropdown-content{
@@ -169,16 +166,12 @@ html, body{
 
 <script>
 
-/* ===== PERFECT HEADER OFFSET ===== */
-document.addEventListener("DOMContentLoaded", function(){
+/* ===== HEADER OFFSET FIX ===== */
+window.addEventListener("load", function(){
   const header = document.querySelector(".site-header");
-
-  function adjustSpacing(){
+  if(header){
     document.body.style.paddingTop = header.offsetHeight + "px";
   }
-
-  adjustSpacing();
-  window.addEventListener("resize", adjustSpacing);
 });
 
 /* ===== ACTIVE LINK ===== */
