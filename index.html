@@ -254,14 +254,46 @@ Promise.all([
   fetch("header.html").then(res => res.text()),
   fetch("footer.html").then(res => res.text())
 ]).then(([headerData, footerData]) => {
+
   document.getElementById("header").innerHTML = headerData;
   document.getElementById("footer").innerHTML = footerData;
 
-  // run year script AFTER footer loads
+  /* ===== FOOTER YEAR ===== */
   const yearEl = document.getElementById("year");
   if(yearEl){
     yearEl.textContent = new Date().getFullYear();
   }
+
+  /* ===== NAV FUNCTIONALITY (THIS IS WHAT YOU WERE MISSING) ===== */
+  const menu = document.getElementById("menuToggle");
+  const nav = document.getElementById("navLinks");
+  const gallery = document.getElementById("galleryToggle");
+  const dropdown = document.getElementById("dropdownMenu");
+
+  if(menu){
+    menu.addEventListener("click", () => {
+      nav.classList.toggle("active");
+    });
+  }
+
+  if(gallery){
+    gallery.addEventListener("click", (e) => {
+      if(window.innerWidth <= 1024){
+        e.preventDefault();
+        dropdown.classList.toggle("active");
+      }
+    });
+  }
+
+  /* ===== CLOSE MENU ON OUTSIDE CLICK ===== */
+  document.addEventListener("click", function(e){
+    if(nav && menu){
+      if(!nav.contains(e.target) && !menu.contains(e.target)){
+        nav.classList.remove("active");
+      }
+    }
+  });
+
 });
 </script>
 
