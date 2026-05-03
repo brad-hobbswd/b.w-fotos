@@ -14,6 +14,7 @@
 /* ===== GLOBAL ===== */
 body{
   margin:0;
+  padding-top:100px; /* ✅ FIX for floating header */
   font-family:'Inter', sans-serif;
   background:#1a1714;
   color:#e6dccf;
@@ -29,7 +30,7 @@ a{
   color:#d4a5ff;
 }
 
-/* ===== NAV (for header include styling) ===== */
+/* ===== NAV (for header include styling only) ===== */
 nav{
   display:flex;
   justify-content:space-between;
@@ -55,7 +56,7 @@ nav{
 
 /* ===== HERO ===== */
 .hero{
-  padding:100px 20px 60px;
+  padding:80px 20px 50px; /* slight adjust for spacing */
   text-align:center;
 }
 
@@ -94,6 +95,7 @@ nav{
   padding:10px 20px;
   border:1px solid #d4a5ff;
   border-radius:25px;
+  transition:.3s;
 }
 
 .back a:hover{
@@ -182,13 +184,43 @@ Promise.all([
   fetch("header.html").then(res => res.text()),
   fetch("footer.html").then(res => res.text())
 ]).then(([headerData, footerData]) => {
+
   document.getElementById("header").innerHTML = headerData;
   document.getElementById("footer").innerHTML = footerData;
 
+  /* YEAR */
   const yearEl = document.getElementById("year");
   if(yearEl){
     yearEl.textContent = new Date().getFullYear();
   }
+
+  /* NAV FUNCTIONALITY (ADDED) */
+  const menu = document.getElementById("menuToggle");
+  const nav = document.getElementById("navLinks");
+  const gallery = document.getElementById("galleryToggle");
+  const dropdown = document.getElementById("dropdownMenu");
+
+  if(menu){
+    menu.onclick = () => nav.classList.toggle("active");
+  }
+
+  if(gallery){
+    gallery.onclick = (e) => {
+      if(window.innerWidth <= 1024){
+        e.preventDefault();
+        dropdown.classList.toggle("active");
+      }
+    };
+  }
+
+  document.addEventListener("click", function(e){
+    if(nav && menu){
+      if(!nav.contains(e.target) && !menu.contains(e.target)){
+        nav.classList.remove("active");
+      }
+    }
+  });
+
 });
 </script>
 
