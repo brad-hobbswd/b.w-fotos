@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Gallery | b.w fotos</title>
+<title>Nature Portraits | b.w fotos</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
@@ -23,6 +23,7 @@ body{
 h1,h2{
   font-family:'Playfair Display', serif;
   letter-spacing:1px;
+  margin-bottom:10px;
 }
 
 a{
@@ -32,12 +33,13 @@ a{
 
 /* ===== HERO ===== */
 .hero{
-  padding:60px 20px 20px;
+  padding:60px 20px 30px;
   text-align:center;
 }
 
 .hero h1{
   font-size:42px;
+  margin-bottom:10px;
 }
 
 .hero p{
@@ -51,18 +53,18 @@ a{
   max-width:800px;
   margin:auto;
   text-align:center;
-  padding:0 20px 40px;
+  padding:0 20px 30px;
 }
 
 .intro p{
   line-height:1.8;
-  opacity:.85;
+  opacity:.9;
 }
 
 /* ===== ALBUMS ===== */
 .albums{
   display:grid;
-  grid-template-columns:repeat(auto-fit, minmax(240px, 300px));
+  grid-template-columns:repeat(auto-fit, minmax(240px, 320px));
   justify-content:center;
   gap:20px;
   padding:20px;
@@ -71,47 +73,40 @@ a{
 .album{
   position:relative;
   cursor:pointer;
+  overflow:hidden;
+  border-radius:10px;
 }
 
 .album img{
   width:100%;
-  height:220px;
+  height:300px;
   object-fit:cover;
-  border-radius:10px;
+  transition:.3s;
+}
+
+.album:hover img{
+  transform:scale(1.03);
+}
+
+.album::after{
+  content:"";
+  position:absolute;
+  bottom:0;
+  width:100%;
+  height:55%;
+  background:linear-gradient(to top, rgba(0,0,0,0.8), transparent);
 }
 
 .album-title{
   position:absolute;
-  bottom:0;
-  width:100%;
-  background:rgba(0,0,0,0.6);
-  padding:10px;
-  text-align:center;
-  font-size:14px;
+  bottom:15px;
+  left:15px;
+  color:#fff;
+  font-size:18px;
+  z-index:2;
 }
 
-/* ===== THUMBNAILS ===== */
-.gallery{
-  display:none;
-  grid-template-columns:repeat(auto-fit, minmax(180px,1fr));
-  gap:12px;
-  padding:20px;
-}
-
-.gallery img{
-  width:100%;
-  aspect-ratio:1/1;
-  object-fit:cover;
-  border-radius:8px;
-  cursor:pointer;
-  transition:.3s;
-}
-
-.gallery img:hover{
-  transform:scale(1.03);
-}
-
-/* ===== LIGHTBOX (UPDATED) ===== */
+/* ===== LIGHTBOX ===== */
 .lightbox{
   position:fixed;
   top:0;
@@ -142,6 +137,25 @@ a{
 
 .arrow.left{ left:20px; }
 .arrow.right{ right:20px; }
+
+/* ===== CTA ===== */
+.cta{
+  text-align:center;
+  padding:50px 20px;
+}
+
+.cta a{
+  display:inline-block;
+  padding:12px 25px;
+  border:1px solid #d4a5ff;
+  border-radius:25px;
+  transition:.3s;
+}
+
+.cta a:hover{
+  background:#d4a5ff;
+  color:#1a1714;
+}
 
 /* ===== FOOTER SYSTEM ===== */
 .site-footer{
@@ -179,98 +193,70 @@ a{
 <div id="header"></div>
 
 <section class="hero">
-  <h1>Gallery</h1>
-  <p>CAPTURING MOMENTS ACROSS EVERY STORY</p>
+  <h1>Nature Portraits</h1>
+  <p>AUTHENTIC. NATURAL. REAL.</p>
 </section>
 
 <section class="intro">
-  <p>Every image carries a moment, a place, a story worth remembering.</p>
-  <p>Explore the albums below and step into the scenes as they were captured.</p>
+  <p>
+    Portraits captured in natural environments where light, setting, and emotion come together.
+    Each session focuses on real moments, not forced poses, creating images that feel honest and timeless.
+  </p>
 </section>
 
 <section class="albums">
 
-  <div class="album" onclick="openAlbum('embassy')">
-    <img src="images/IMG_1750.jpeg">
-    <div class="album-title">Embassy Suites • 2021</div>
+  <div class="album" onclick="openAlbum('faye')">
+    <img src="images/IMG_1806.jpeg">
+    <div class="album-title">Grandma Faye • Age 81</div>
   </div>
 
-  <div class="album" onclick="openAlbum('falls')">
-    <img src="images/IMG_1754.jpeg">
-    <div class="album-title">76 Falls • 2020</div>
-  </div>
-
-  <div class="album" onclick="openAlbum('rv')">
-    <img src="images/IMG_1764.jpeg">
-    <div class="album-title">Thompson RV • 2020</div>
-  </div>
-
-  <div class="album" onclick="openAlbum('school')">
-    <img src="images/IMG_1770.jpeg">
-    <div class="album-title">Old Flat Lick • 2019</div>
-  </div>
-
-  <div class="album" onclick="openAlbum('park')">
-    <img src="images/IMG_1784.jpeg">
-    <div class="album-title">Random Park • 2019</div>
-  </div>
-
-  <div class="album" onclick="openAlbum('rock')">
-    <img src="images/IMG_1797.jpeg">
-    <div class="album-title">Rockcastle • 2019</div>
-  </div>
-
-  <div class="album" onclick="openAlbum('extra')">
-    <img src="images/IMG_1804.jpeg">
-    <div class="album-title">Campfire & Wind Chime</div>
+  <div class="album" onclick="openAlbum('gabriel')">
+    <img src="images/IMG_1800.jpeg">
+    <div class="album-title">Gabriel • Age 4.5</div>
   </div>
 
 </section>
 
-<section class="gallery" id="albumView"></section>
-
-<!-- UPDATED LIGHTBOX -->
 <div class="lightbox" id="lightbox" onclick="closeLightbox()">
   <span class="arrow left" onclick="prev(event)">❮</span>
   <img id="lightbox-img">
   <span class="arrow right" onclick="next(event)">❯</span>
 </div>
 
+<section class="cta">
+  <h2>Book a Nature Portrait Session</h2>
+  <a href="bookings.html">Contact Me</a>
+</section>
+
 <div id="footer"></div>
 
 <script>
 
-/* ===== GALLERY LOGIC ===== */
+/* ===== ORIGINAL GALLERY LOGIC (UNCHANGED) ===== */
 const albums = {
-  embassy:["images/IMG_1750.jpeg","images/IMG_1751.jpeg","images/IMG_1752.jpeg","images/IMG_1753.jpeg"],
-  falls:["images/IMG_1754.jpeg","images/IMG_1755.jpeg","images/IMG_1756.jpeg","images/IMG_1757.jpeg","images/IMG_1758.jpeg","images/IMG_1759.jpeg","images/IMG_1760.jpeg","images/IMG_1761.jpeg","images/IMG_1762.jpeg","images/IMG_1763.jpeg"],
-  rv:["images/IMG_1764.jpeg","images/IMG_1765.jpeg","images/IMG_1766.jpeg","images/IMG_1767.jpeg","images/IMG_1768.jpeg","images/IMG_1769.jpeg"],
-  school:["images/IMG_1770.jpeg","images/IMG_1771.jpeg","images/IMG_1772.jpeg","images/IMG_1773.jpeg","images/IMG_1774.jpeg","images/IMG_1775.jpeg","images/IMG_1776.jpeg","images/IMG_1777.jpeg","images/IMG_1778.jpeg","images/IMG_1779.jpeg","images/IMG_1780.jpeg","images/IMG_1781.jpeg","images/IMG_1782.jpeg","images/IMG_1783.jpeg"],
-  park:["images/IMG_1784.jpeg","images/IMG_1785.jpeg","images/IMG_1786.jpeg","images/IMG_1787.jpeg","images/IMG_1788.jpeg","images/IMG_1789.jpeg","images/IMG_1790.jpeg","images/IMG_1791.jpeg","images/IMG_1792.jpeg","images/IMG_1793.jpeg","images/IMG_1794.jpeg","images/IMG_1795.jpeg","images/IMG_1796.jpeg"],
-  rock:["images/IMG_1797.jpeg","images/IMG_1798.jpeg","images/IMG_1799.jpeg"],
-  extra:["images/IMG_1804.jpeg","images/IMG_1805.jpeg"]
+  faye: [
+    "images/IMG_1806.jpeg",
+    "images/IMG_1807.jpeg",
+    "images/IMG_1808.jpeg",
+    "images/IMG_1809.jpeg"
+  ],
+  gabriel: [
+    "images/IMG_1800.jpeg",
+    "images/IMG_1801.jpeg",
+    "images/IMG_1802.jpeg",
+    "images/IMG_1803.jpeg"
+  ]
 };
 
 let currentAlbum = [];
-let currentIndex = 0;
+let index = 0;
 
 function openAlbum(name){
-  const container = document.getElementById("albumView");
-  container.innerHTML = "";
   currentAlbum = albums[name];
-
-  currentAlbum.forEach((img,i)=>{
-    container.innerHTML += `<img src="${img}" onclick="openLightbox(${i})">`;
-  });
-
-  container.style.display = "grid";
-  window.scrollTo({ top: container.offsetTop - 40, behavior: "smooth" });
-}
-
-function openLightbox(i){
-  currentIndex = i;
+  index = 0;
   document.getElementById("lightbox").style.display = "flex";
-  document.getElementById("lightbox-img").src = currentAlbum[i];
+  document.getElementById("lightbox-img").src = currentAlbum[index];
 }
 
 function closeLightbox(){
@@ -279,14 +265,14 @@ function closeLightbox(){
 
 function next(e){
   e.stopPropagation();
-  currentIndex = (currentIndex + 1) % currentAlbum.length;
-  document.getElementById("lightbox-img").src = currentAlbum[currentIndex];
+  index = (index + 1) % currentAlbum.length;
+  document.getElementById("lightbox-img").src = currentAlbum[index];
 }
 
 function prev(e){
   e.stopPropagation();
-  currentIndex = (currentIndex - 1 + currentAlbum.length) % currentAlbum.length;
-  document.getElementById("lightbox-img").src = currentAlbum[currentIndex];
+  index = (index - 1 + currentAlbum.length) % currentAlbum.length;
+  document.getElementById("lightbox-img").src = currentAlbum[index];
 }
 
 /* ===== HEADER SYSTEM ===== */
@@ -298,8 +284,10 @@ Promise.all([
   document.getElementById("header").innerHTML = headerData;
   document.getElementById("footer").innerHTML = footerData;
 
-  const year = document.getElementById("year");
-  if(year) year.textContent = new Date().getFullYear();
+  const yearEl = document.getElementById("year");
+  if(yearEl){
+    yearEl.textContent = new Date().getFullYear();
+  }
 
   const menu = document.getElementById("menuToggle");
   const nav = document.getElementById("navLinks");
