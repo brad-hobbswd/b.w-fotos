@@ -14,7 +14,7 @@
 /* ===== GLOBAL ===== */
 body{
   margin:0;
-  padding-top:100px; /* ✅ FIX for floating header */
+  padding-top:100px;
   font-family:'Inter', sans-serif;
   background:#1a1714;
   color:#e6dccf;
@@ -30,33 +30,9 @@ a{
   color:#d4a5ff;
 }
 
-/* ===== NAV (for header include styling only) ===== */
-nav{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:20px 40px;
-  border-bottom:1px solid rgba(212,165,255,0.2);
-}
-
-.logo{
-  font-size:20px;
-  letter-spacing:2px;
-}
-
-.nav-links a{
-  margin-left:25px;
-  font-size:14px;
-  opacity:.8;
-}
-
-.nav-links a:hover{
-  opacity:1;
-}
-
 /* ===== HERO ===== */
 .hero{
-  padding:80px 20px 50px; /* slight adjust for spacing */
+  padding:80px 20px 50px;
   text-align:center;
 }
 
@@ -136,16 +112,16 @@ nav{
 
 <body>
 
-<!-- ===== HEADER INCLUDE ===== -->
+<!-- HEADER -->
 <div id="header"></div>
 
-<!-- ===== HERO ===== -->
+<!-- HERO -->
 <section class="hero">
   <h1>The Story Behind the Lens</h1>
   <p>IDENTITY. STORY. PERSPECTIVE.</p>
 </section>
 
-<!-- ===== CONTENT ===== -->
+<!-- CONTENT -->
 <section class="content">
 
   <p>
@@ -170,15 +146,14 @@ nav{
 
 </section>
 
-<!-- ===== BACK CTA ===== -->
+<!-- BACK CTA -->
 <div class="back">
   <a href="index.html">Back to Home</a>
 </div>
 
-<!-- ===== FOOTER INCLUDE ===== -->
+<!-- FOOTER -->
 <div id="footer"></div>
 
-<!-- ===== LOAD HEADER + FOOTER ===== -->
 <script>
 Promise.all([
   fetch("header.html").then(res => res.text()),
@@ -194,11 +169,13 @@ Promise.all([
     yearEl.textContent = new Date().getFullYear();
   }
 
-  /* NAV FUNCTIONALITY (ADDED) */
+  /* NAV FUNCTIONALITY */
   const menu = document.getElementById("menuToggle");
   const nav = document.getElementById("navLinks");
   const gallery = document.getElementById("galleryToggle");
   const dropdown = document.getElementById("dropdownMenu");
+
+  let galleryOpened = false;
 
   if(menu){
     menu.onclick = () => nav.classList.toggle("active");
@@ -206,10 +183,19 @@ Promise.all([
 
   if(gallery){
     gallery.onclick = (e) => {
+
       if(window.innerWidth <= 1024){
-        e.preventDefault();
-        dropdown.classList.toggle("active");
+
+        if(!galleryOpened){
+          e.preventDefault();
+          dropdown.classList.add("active");
+          galleryOpened = true;
+        } else {
+          galleryOpened = false;
+        }
+
       }
+
     };
   }
 
@@ -217,6 +203,8 @@ Promise.all([
     if(nav && menu){
       if(!nav.contains(e.target) && !menu.contains(e.target)){
         nav.classList.remove("active");
+        dropdown.classList.remove("active");
+        galleryOpened = false;
       }
     }
   });
