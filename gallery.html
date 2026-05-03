@@ -90,28 +90,7 @@ a{
   font-size:14px;
 }
 
-/* ===== THUMBNAILS ===== */
-.gallery{
-  display:none;
-  grid-template-columns:repeat(auto-fit, minmax(180px,1fr));
-  gap:12px;
-  padding:20px;
-}
-
-.gallery img{
-  width:100%;
-  aspect-ratio:1/1;
-  object-fit:cover;
-  border-radius:8px;
-  cursor:pointer;
-  transition:.3s;
-}
-
-.gallery img:hover{
-  transform:scale(1.03);
-}
-
-/* ===== LIGHTBOX (MATCHES PORTRAITS) ===== */
+/* ===== LIGHTBOX ===== */
 .lightbox{
   position:fixed;
   top:0;
@@ -227,9 +206,7 @@ a{
 
 </section>
 
-<section class="gallery" id="albumView"></section>
-
-<!-- ✅ FIXED LIGHTBOX -->
+<!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox">
   <span class="arrow left" onclick="prev(event)">❮</span>
   <img id="lightbox-img" onclick="event.stopPropagation()">
@@ -240,7 +217,7 @@ a{
 
 <script>
 
-/* ===== GALLERY ===== */
+/* ===== ALBUM DATA ===== */
 const albums = {
   embassy:["images/IMG_1750.jpeg","images/IMG_1751.jpeg","images/IMG_1752.jpeg","images/IMG_1753.jpeg"],
   falls:["images/IMG_1754.jpeg","images/IMG_1755.jpeg","images/IMG_1756.jpeg","images/IMG_1757.jpeg","images/IMG_1758.jpeg","images/IMG_1759.jpeg","images/IMG_1760.jpeg","images/IMG_1761.jpeg","images/IMG_1762.jpeg","images/IMG_1763.jpeg"],
@@ -254,23 +231,13 @@ const albums = {
 let currentAlbum = [];
 let currentIndex = 0;
 
+/* 🔥 OPEN DIRECTLY IN LIGHTBOX */
 function openAlbum(name){
-  const container = document.getElementById("albumView");
-  container.innerHTML = "";
   currentAlbum = albums[name];
+  currentIndex = 0;
 
-  currentAlbum.forEach((img,i)=>{
-    container.innerHTML += `<img src="${img}" onclick="openLightbox(${i})">`;
-  });
-
-  container.style.display = "grid";
-  window.scrollTo({ top: container.offsetTop - 40, behavior: "smooth" });
-}
-
-function openLightbox(i){
-  currentIndex = i;
   document.getElementById("lightbox").style.display = "flex";
-  document.getElementById("lightbox-img").src = currentAlbum[i];
+  document.getElementById("lightbox-img").src = currentAlbum[0];
 }
 
 function closeLightbox(){
@@ -289,7 +256,7 @@ function prev(e){
   document.getElementById("lightbox-img").src = currentAlbum[currentIndex];
 }
 
-/* ✅ CLICK OUTSIDE IMAGE CLOSES */
+/* CLICK OUTSIDE CLOSE */
 document.getElementById("lightbox").addEventListener("click", function(e){
   if(e.target.id === "lightbox"){
     closeLightbox();
