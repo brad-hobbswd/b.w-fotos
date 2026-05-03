@@ -14,6 +14,7 @@
 /* ===== GLOBAL ===== */
 body{
   margin:0;
+  padding-top:100px;
   font-family:'Inter', sans-serif;
   background:#1a1714;
   color:#e6dccf;
@@ -27,30 +28,6 @@ h1,h2{
 a{
   text-decoration:none;
   color:#d4a5ff;
-}
-
-/* ===== NAV (for header include styling) ===== */
-nav{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:20px 40px;
-  border-bottom:1px solid rgba(212,165,255,0.2);
-}
-
-.logo{
-  font-size:20px;
-  letter-spacing:2px;
-}
-
-.nav-links a{
-  margin-left:25px;
-  font-size:14px;
-  opacity:.8;
-}
-
-.nav-links a:hover{
-  opacity:1;
 }
 
 /* ===== HERO ===== */
@@ -150,16 +127,13 @@ nav{
 
 <body>
 
-<!-- ===== HEADER INCLUDE ===== -->
 <div id="header"></div>
 
-<!-- ===== HERO ===== -->
 <section class="hero">
   <h1>Scenic Creative</h1>
   <p>LIGHT. LANDSCAPE. STORY.</p>
 </section>
 
-<!-- ===== INTRO ===== -->
 <section class="intro">
   <p>
     Scenic photography focused on capturing the beauty of environments, light, and atmosphere.
@@ -171,26 +145,23 @@ nav{
   </p>
 </section>
 
-<!-- ===== BANNER ===== -->
 <section class="scenic-banner">
   <img src="images/4078CC2A-A0AA-4387-AFC9-0F88FD7CADB0.png" alt="">
 </section>
 
-<!-- ===== CTA ===== -->
 <section class="cta">
   <h2>View More Work or Get in Touch</h2>
   <a href="bookings.html">Contact Me</a>
 </section>
 
-<!-- ===== FOOTER INCLUDE ===== -->
 <div id="footer"></div>
 
-<!-- ===== LOAD HEADER + FOOTER ===== -->
 <script>
 Promise.all([
   fetch("header.html").then(res => res.text()),
   fetch("footer.html").then(res => res.text())
 ]).then(([headerData, footerData]) => {
+
   document.getElementById("header").innerHTML = headerData;
   document.getElementById("footer").innerHTML = footerData;
 
@@ -198,6 +169,42 @@ Promise.all([
   if(yearEl){
     yearEl.textContent = new Date().getFullYear();
   }
+
+  const menu = document.getElementById("menuToggle");
+  const nav = document.getElementById("navLinks");
+  const gallery = document.getElementById("galleryToggle");
+  const dropdown = document.getElementById("dropdownMenu");
+
+  let galleryOpened = false;
+
+  if(menu){
+    menu.onclick = () => nav.classList.toggle("active");
+  }
+
+  if(gallery){
+    gallery.onclick = (e) => {
+      if(window.innerWidth <= 1024){
+        if(!galleryOpened){
+          e.preventDefault();
+          dropdown.classList.add("active");
+          galleryOpened = true;
+        } else {
+          galleryOpened = false;
+        }
+      }
+    };
+  }
+
+  document.addEventListener("click", function(e){
+    if(nav && menu){
+      if(!nav.contains(e.target) && !menu.contains(e.target)){
+        nav.classList.remove("active");
+        dropdown.classList.remove("active");
+        galleryOpened = false;
+      }
+    }
+  });
+
 });
 </script>
 
