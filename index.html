@@ -14,7 +14,7 @@
 /* ===== GLOBAL ===== */
 body{
   margin:0;
-  padding-top:70px;
+  padding-top:100px; /* adjusted for floating header */
   font-family:'Inter', sans-serif;
   background:#1a1714;
   color:#e6dccf;
@@ -73,6 +73,13 @@ a{
   border:1px solid rgba(212,165,255,0.15);
   padding:20px;
   border-radius:12px;
+  transition:.3s;
+}
+
+.card:hover{
+  transform:translateY(-5px);
+  border-color:#d4a5ff;
+  box-shadow:0 0 20px rgba(212,165,255,0.15);
 }
 
 /* ===== CTA ===== */
@@ -88,51 +95,8 @@ a{
   text-align:center;
 }
 
-/* ===== 🔥 FORCE NAV FIX ===== */
-
-.menu-toggle{
-  display:none;
-}
-
-@media(max-width:1024px){
-
-  .menu-toggle{
-    display:block !important;
-    font-size:26px;
-    cursor:pointer;
-    color:#e6dccf;
-  }
-
-  .nav-links{
-    position:fixed !important;
-    top:70px;
-    right:-260px;
-    width:240px;
-    height:100%;
-    background:#1a1714;
-    flex-direction:column !important;
-    padding:20px;
-    transition:.3s ease;
-    z-index:9998;
-  }
-
-  .nav-links.active{
-    right:0 !important;
-  }
-
-  .nav-links a{
-    margin:12px 0;
-  }
-
-  .dropdown-content{
-    display:none;
-  }
-
-  .dropdown-content.active{
-    display:block;
-  }
-
-}
+/* 🚫 REMOVED NAV CONFLICTS */
+/* (header.html now fully controls nav behavior) */
 
 </style>
 
@@ -193,36 +157,32 @@ Promise.all([
   const year = document.getElementById("year");
   if(year) year.textContent = new Date().getFullYear();
 
-  /* 🔥 NAV FIX */
-  setTimeout(() => {
+  /* NAV FUNCTIONALITY */
+  const menu = document.getElementById("menuToggle");
+  const nav = document.getElementById("navLinks");
+  const gallery = document.getElementById("galleryToggle");
+  const dropdown = document.getElementById("dropdownMenu");
 
-    const menu = document.getElementById("menuToggle");
-    const nav = document.getElementById("navLinks");
-    const gallery = document.getElementById("galleryToggle");
-    const dropdown = document.getElementById("dropdownMenu");
+  if(menu){
+    menu.onclick = () => nav.classList.toggle("active");
+  }
 
-    if(menu){
-      menu.onclick = () => nav.classList.toggle("active");
-    }
-
-    if(gallery){
-      gallery.onclick = (e) => {
-        if(window.innerWidth <= 1024){
-          e.preventDefault();
-          dropdown.classList.toggle("active");
-        }
-      };
-    }
-
-    document.addEventListener("click", function(e){
-      if(nav && menu){
-        if(!nav.contains(e.target) && !menu.contains(e.target)){
-          nav.classList.remove("active");
-        }
+  if(gallery){
+    gallery.onclick = (e) => {
+      if(window.innerWidth <= 1024){
+        e.preventDefault();
+        dropdown.classList.toggle("active");
       }
-    });
+    };
+  }
 
-  }, 50);
+  document.addEventListener("click", function(e){
+    if(nav && menu){
+      if(!nav.contains(e.target) && !menu.contains(e.target)){
+        nav.classList.remove("active");
+      }
+    }
+  });
 
 });
 </script>
