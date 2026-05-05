@@ -34,14 +34,26 @@
   width:92%;
   max-width:1100px;
   z-index:9999;
-  background:#1a1714;
+
+  /* ✨ translucent background */
+  background:rgba(26,23,20,0.6);
+
+  /* ✨ glass blur effect */
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+
   display:flex;
   justify-content:space-between;
   align-items:center;
+
   padding:16px 24px;
   border-radius:12px;
-  border:1px solid rgba(212,165,255,0.15);
-  box-shadow:0 10px 30px rgba(0,0,0,0.5);
+
+  /* soften border for glass look */
+  border:1px solid rgba(255,255,255,0.08);
+
+  /* softer shadow */
+  box-shadow:0 10px 30px rgba(0,0,0,0.4);
 }
 
 /* ===== LOGO ===== */
