@@ -9,8 +9,7 @@
     <a href="about.html">About</a>
 
     <div class="dropdown">
-      <a href="gallery.html">Gallery</a>
-      <span class="dropdown-arrow" id="galleryToggle">▾</span>
+      <a href="#" id="galleryToggle">Gallery ▾</a>
 
       <div class="dropdown-content" id="dropdownMenu">
         <a href="portraits.html">Portraits</a>
@@ -74,16 +73,12 @@
 /* ===== DROPDOWN ===== */
 .dropdown{
   position:relative;
-  display:flex;
-  align-items:center;
-  gap:6px;
-  padding-bottom:10px; /* hover buffer */
 }
 
-.dropdown-arrow{
-  cursor:pointer;
-  font-size:12px;
-  color:#e6dccf;
+/* align with other links */
+.dropdown > a{
+  display:inline-block;
+  margin-left:25px;
 }
 
 /* dropdown menu */
@@ -91,26 +86,26 @@
   display:none;
   position:absolute;
   top:100%;
-  margin-top:8px;
   left:0;
+
   background:#211d19;
   border:1px solid rgba(212,165,255,0.2);
   border-radius:8px;
+
   min-width:160px;
-  pointer-events:auto;
+
+  padding-top:8px; /* hover bridge */
+}
+
+/* keep open while hovering */
+.dropdown:hover .dropdown-content{
+  display:block;
 }
 
 .dropdown-content a{
   display:block;
   padding:10px;
   margin:0;
-}
-
-/* DESKTOP HOVER */
-@media(min-width:1025px){
-  .dropdown:hover .dropdown-content{
-    display:block;
-  }
 }
 
 /* ===== HAMBURGER ===== */
@@ -158,15 +153,6 @@
   }
 
   /* mobile dropdown */
-  .dropdown{
-    flex-direction:column;
-    align-items:flex-start;
-  }
-
-  .dropdown-arrow{
-    margin-left:5px;
-  }
-
   .dropdown-content{
     display:none;
     position:static;
@@ -178,6 +164,7 @@
   .dropdown-content.active{
     display:block;
   }
+
 }
 
 </style>
@@ -194,8 +181,9 @@ menuToggle.addEventListener("click", () => {
 });
 
 // Mobile dropdown toggle
-galleryToggle.addEventListener("click", () => {
+galleryToggle.addEventListener("click", (e) => {
   if (window.innerWidth <= 1024) {
+    e.preventDefault();
     dropdownMenu.classList.toggle("active");
   }
 });
