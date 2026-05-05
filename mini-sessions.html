@@ -164,18 +164,18 @@ a{
   color:#d4a5ff;
 }
 
-/* ===== MOBILE FIX FOR GALLERY ===== */
+/* ===== MOBILE: FORCE 4 IN ONE ROW ===== */
 @media (max-width: 600px){
 
   .gallery{
-    grid-template-columns: 1fr;
-    gap:12px;
-    padding:0 15px;
+    grid-template-columns: repeat(4, 1fr);
+    gap:8px;
+    padding:0 10px;
   }
 
   .gallery img{
     height:auto;
-    aspect-ratio: 4 / 5;
+    aspect-ratio: 1 / 1;
   }
 
 }
