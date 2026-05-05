@@ -61,7 +61,7 @@ a{
   opacity:.9;
 }
 
-/* ===== ALBUMS (ALIGNED WITH GALLERY STYLE) ===== */
+/* ===== ALBUMS ===== */
 .albums{
   display:grid;
   grid-template-columns:repeat(auto-fit, minmax(240px, 320px));
@@ -85,12 +85,12 @@ a{
   transition:.3s;
 }
 
-/* hover effect */
+/* hover */
 .album:hover img{
   transform:scale(1.03);
 }
 
-/* gradient overlay */
+/* gradient */
 .album::after{
   content:"";
   position:absolute;
@@ -100,13 +100,17 @@ a{
   background:linear-gradient(to top, rgba(0,0,0,0.8), transparent);
 }
 
-/* title */
+/* ✅ FIXED TITLE STYLE */
 .album-title{
   position:absolute;
   bottom:15px;
   left:15px;
+  right:15px;
+
   color:#fff;
   font-size:18px;
+  text-align:left;
+
   z-index:2;
   letter-spacing:0.5px;
 }
@@ -238,7 +242,7 @@ a{
 
 <script>
 
-/* ===== ORIGINAL GALLERY LOGIC (UNCHANGED) ===== */
+/* ===== ORIGINAL LOGIC (UNCHANGED) ===== */
 const albums = {
   faye: [
     "images/IMG_1806.jpeg",
