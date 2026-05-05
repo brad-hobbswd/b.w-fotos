@@ -149,6 +149,27 @@ a{
   color:#d4a5ff;
 }
 
+/* ===== MOBILE: FIXED THUMBNAIL ROWS (NO SCROLL) ===== */
+@media (max-width: 600px){
+
+  .albums{
+    grid-template-columns: repeat(2, 1fr);
+    gap:10px;
+    padding:0 12px;
+  }
+
+  .album img{
+    height:auto;
+    aspect-ratio: 1 / 1;
+  }
+
+  .album-title{
+    font-size:12px;
+    padding:6px;
+  }
+
+}
+
 </style>
 
 </head>
