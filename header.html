@@ -9,7 +9,8 @@
     <a href="about.html">About</a>
 
     <div class="dropdown">
-      <a href="gallery.html" id="galleryToggle">Gallery ▾</a>
+      <a href="gallery.html">Gallery</a>
+      <span class="dropdown-arrow" id="galleryToggle">▾</span>
 
       <div class="dropdown-content" id="dropdownMenu">
         <a href="portraits.html">Portraits</a>
@@ -25,30 +26,22 @@
 
 <style>
 
-/* ===== HEADER (FLOATING CENTERED) ===== */
+/* ===== HEADER ===== */
 .site-header{
   position:fixed;
   top:15px;
   left:50%;
   transform:translateX(-50%);
-
   width:92%;
   max-width:1100px;
-
   z-index:9999;
-
   background:#1a1714;
-
   display:flex;
   justify-content:space-between;
   align-items:center;
-
   padding:16px 24px;
-
   border-radius:12px;
-
   border:1px solid rgba(212,165,255,0.15);
-
   box-shadow:0 10px 30px rgba(0,0,0,0.5);
 }
 
@@ -59,7 +52,7 @@
   color:#e6dccf;
 }
 
-/* ===== NAV LINKS DESKTOP ===== */
+/* ===== NAV LINKS ===== */
 .nav-links{
   display:flex;
   align-items:center;
@@ -78,22 +71,33 @@
   color:#d4a5ff;
 }
 
-/* ===== DROPDOWN DESKTOP ===== */
+/* ===== DROPDOWN ===== */
 .dropdown{
   position:relative;
+  display:flex;
+  align-items:center;
+  gap:6px;
+  padding-bottom:10px; /* hover buffer */
 }
 
+.dropdown-arrow{
+  cursor:pointer;
+  font-size:12px;
+  color:#e6dccf;
+}
+
+/* dropdown menu */
 .dropdown-content{
   display:none;
   position:absolute;
-  top:35px;
+  top:100%;
+  margin-top:8px;
   left:0;
-
   background:#211d19;
   border:1px solid rgba(212,165,255,0.2);
   border-radius:8px;
-
   min-width:160px;
+  pointer-events:auto;
 }
 
 .dropdown-content a{
@@ -102,6 +106,7 @@
   margin:0;
 }
 
+/* DESKTOP HOVER */
 @media(min-width:1025px){
   .dropdown:hover .dropdown-content{
     display:block;
@@ -116,7 +121,7 @@
   color:#e6dccf;
 }
 
-/* ===== TABLET + MOBILE ===== */
+/* ===== MOBILE ===== */
 @media(max-width:1024px){
 
   .menu-toggle{
@@ -125,26 +130,17 @@
 
   .nav-links{
     position:fixed;
-
     top:85px;
     right:4%;
-
     width:240px;
-
     background:#1a1714;
-
     display:flex;
     flex-direction:column;
     align-items:flex-start;
-
     padding:25px;
-
     border-radius:12px;
-
     box-shadow:0 10px 30px rgba(0,0,0,0.6);
-
     transition:.3s ease;
-
     opacity:0;
     pointer-events:none;
     transform:translateY(-10px);
@@ -161,7 +157,16 @@
     font-size:16px;
   }
 
-  /* dropdown mobile */
+  /* mobile dropdown */
+  .dropdown{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .dropdown-arrow{
+    margin-left:5px;
+  }
+
   .dropdown-content{
     display:none;
     position:static;
@@ -173,7 +178,25 @@
   .dropdown-content.active{
     display:block;
   }
-
 }
 
 </style>
+
+<script>
+const menuToggle = document.getElementById("menuToggle");
+const navLinks = document.getElementById("navLinks");
+const galleryToggle = document.getElementById("galleryToggle");
+const dropdownMenu = document.getElementById("dropdownMenu");
+
+// Mobile menu toggle
+menuToggle.addEventListener("click", () => {
+  navLinks.classList.toggle("active");
+});
+
+// Mobile dropdown toggle
+galleryToggle.addEventListener("click", () => {
+  if (window.innerWidth <= 1024) {
+    dropdownMenu.classList.toggle("active");
+  }
+});
+</script>
