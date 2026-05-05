@@ -164,6 +164,22 @@ a{
   color:#d4a5ff;
 }
 
+/* ===== MOBILE FIX FOR GALLERY ===== */
+@media (max-width: 600px){
+
+  .gallery{
+    grid-template-columns: 1fr;
+    gap:12px;
+    padding:0 15px;
+  }
+
+  .gallery img{
+    height:auto;
+    aspect-ratio: 4 / 5;
+  }
+
+}
+
 </style>
 
 </head>
