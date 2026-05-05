@@ -63,6 +63,7 @@
   opacity:.8;
   color:#e6dccf;
   transition:.2s;
+  text-decoration:none;
 }
 
 .nav-links a:hover{
@@ -75,9 +76,8 @@
   position:relative;
 }
 
-/* align with other links */
+/* keep alignment */
 .dropdown > a{
-  display:inline-block;
   margin-left:25px;
 }
 
@@ -85,7 +85,7 @@
 .dropdown-content{
   display:none;
   position:absolute;
-  top:100%;
+  top:100%;   /* no gap */
   left:0;
 
   background:#211d19;
@@ -94,17 +94,20 @@
 
   min-width:160px;
 
-  padding-top:8px; /* hover bridge */
+  padding:8px 0;
+  z-index:99999;
 }
 
-/* keep open while hovering */
-.dropdown:hover .dropdown-content{
+/* 🔥 KEY FIX: keeps dropdown open */
+.dropdown:hover > .dropdown-content,
+.dropdown:focus-within > .dropdown-content,
+.dropdown-content:hover{
   display:block;
 }
 
 .dropdown-content a{
   display:block;
-  padding:10px;
+  padding:10px 14px;
   margin:0;
 }
 
@@ -175,12 +178,12 @@ const navLinks = document.getElementById("navLinks");
 const galleryToggle = document.getElementById("galleryToggle");
 const dropdownMenu = document.getElementById("dropdownMenu");
 
-// Mobile menu toggle
+// Mobile menu
 menuToggle.addEventListener("click", () => {
   navLinks.classList.toggle("active");
 });
 
-// Mobile dropdown toggle
+// Mobile dropdown
 galleryToggle.addEventListener("click", (e) => {
   if (window.innerWidth <= 1024) {
     e.preventDefault();
